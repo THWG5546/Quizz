@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#valider_reponse").click(function () {
-        $("#monBloc").load("maData.txt", function (repTxt, repStatus, xhr) {
+        $("#question").load("maData.txt", function (repTxt, repStatus, xhr) {
             if (repStatus == "success")
                 alert("External content loaded successfully!");
             if (repStatus == "error")
