@@ -17,21 +17,24 @@
             <a href="https://yahoo.com">Question precedente</a>
             <a href="https://www.youtube.com/">autre</a>
         </nav>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../backend/quizz.js"></script>
     </header>
 
     <main class="grid-item">
-        <h1>Question n°X</h1>
-        <h2>Quel acteur a joué le rôle principal dans "Forrest Gump" ?</h2>
-        <form action="" method="POST">
-            <label for="answer">Choix n°1 :</label>
-            <input type="radio" value="1">
-            <label for="answer">Choix n°2 :</label>
-            <input type="radio" value="2">
-            <label for="answer">Choix n°3 :</label>
-            <input type="radio" value="3">
-            <label for="answer">Choix n°4 :</label>
-            <input type="radio" value="4">
-        </form>
+        <div id="question-container">
+            <h1>Question n°<?php echo $row['question']; ?></h1>
+            <h2><?php echo $row['question']; ?></h2>
+            <form id="quizz" action="" method="POST">
+                <label for="answer">Choix n°1 :</label>
+                <input type="radio" value="<?php echo $question['reponse1']; ?>"><?php echo $question['reponse1']; ?><br>
+                <label for="answer">Choix n°2 :</label>
+                <input type="radio" value="<?php echo $question['reponse2']; ?>"><?php echo $question['reponse2']; ?><br>
+                <label for="answer">Choix n°3 :</label>
+                <input type="radio" value="<?php echo $question['reponse3']; ?>"><?php echo $question['reponse3']; ?><br>
+                <label for="answer">Choix n°4 :</label>
+                <input type="radio" value="<?php echo $question['reponse4']; ?>"><?php echo $question['reponse4']; ?><br>
+            </form>
     </main>
 
     <footer class="grid-item">
