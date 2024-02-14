@@ -11,6 +11,7 @@
 <body class="grid-container">
     <h3>Test</h3>
     <header>
+        <?php include "../backend/quizz_backend.php" ?>
         <img src="img/logo.png" alt="logo du site web" id="logo_easy">
         <nav>
             <a href="https://google.com">Accueil</a>
