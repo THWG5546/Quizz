@@ -14,8 +14,8 @@
         <img src="img/logo.png" alt="logo du site web" id="logo_easy">
         <nav>
             <a href="https://google.com">Accueil</a>
-            <a href="https://chat.openai.com/">ChatGpt</a>
-            <a href="https://www.youtube.com/">Youtube</a>
+            <a href="https://yahoo.com">Question precedente</a>
+            <a href="https://www.youtube.com/">autre</a>
         </nav>
     </header>
 
