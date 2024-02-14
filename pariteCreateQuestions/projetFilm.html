@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyQuizz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png">
+</head>
+
+<body>
+    <div class="bande">
+        <img class="logo" src="logo.png" alt="logo">
+        <h1 class="titre">EasyQuizz!</h1>
+    </div>
+
+    <div class="container">
+        <div class="titre-container">
+            <h1 class="titre">Créez votre propre Quizz ! </h1>
+        </div>
+
+        <form id="quizz-form">
+            <div class="sous-titre-container phrase-container">
+                <label for="question">Entrez Votre Question :</label><br>
+                <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
+            </div>
+
+            <div id="reponses-container" class="reponses-container">
+
+            </div>
+
+            <button type="button" id="ajouter-reponse-btn" onclick="ajouterReponse()">Ajouter une réponse</button>
+            <button type="submit" id="valider-quizz-btn">Valider</button>
+        </form>
+
+        <div id="quizz-output" class="sous-titre-container" style="display: none;">
+            <p>Votre question :</p>
+            <p id="question-display"></p>
+
+            <p>Réponses :</p>
+            <ul id="reponses-display" class="reponseInput"></ul>
+
+            <p id="bonnes-reponses-display"></p>
+        </div>
+    </div>
+
+    <script>
+        let nombreReponses = 1;
+
+        function ajouterReponse() {
+            let reponsesContainer = document.getElementById('reponses-container');
+            let nouvelleReponseInput = document.createElement('input');
+            nouvelleReponseInput.type = 'text';
+            nouvelleReponseInput.name = 'reponse' + nombreReponses;
+            nouvelleReponseInput.placeholder = 'Réponse ' + nombreReponses;
+            reponsesContainer.appendChild(nouvelleReponseInput);
+
+            // Créer une case à cocher pour chaque nouvelle réponse ajoutée
+            let nouvelleCheckBox = document.createElement('input');
+            nouvelleCheckBox.type = 'checkbox';
+            nouvelleCheckBox.id = 'checkbox' + nombreReponses;
+            reponsesContainer.appendChild(nouvelleCheckBox);
+
+            reponsesContainer.appendChild(document.createElement('br'));
+            nombreReponses++;
+        }
+
+        document.getElementById('quizz-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let question = document.getElementById('question').value;
+            let reponses = [];
+            let bonnesReponses = []; // Stocker les indices des bonnes réponses sélectionnées
+
+            // Récupérer les réponses et leurs états (sélectionnées ou non)
+            for (let i = 1; i < nombreReponses; i++) {
+                let reponseInput = document.getElementById('reponse' + i);
+                let checkBox = document.getElementById('checkbox' + i);
+
+                if (reponseInput.value.trim() !== '') {
+                    reponses.push(reponseInput.value);
+
+                    if (checkBox.checked) {
+                        bonnesReponses.push(i - 1);
+                    }
+                }
+            }
+
+
+            if (reponses.length === 0) {
+                alert('Veuillez entrer au moins une réponse.');
+                return;
+            }
+
+
+            document.getElementById('question-display').innerText = question;
+
+            // Afficher les réponses
+            let reponsesDisplay = document.getElementById('reponses-display');
+            reponsesDisplay.innerHTML = '';
+            reponses.forEach(function (reponse) {
+                let li = document.createElement('li');
+                li.textContent = reponse;
+                reponsesDisplay.appendChild(li);
+            });
+
+            // Afficher les bonnes réponses sélectionnées
+            let bonnesReponsesDisplay = document.getElementById('bonnes-reponses-display');
+            bonnesReponsesDisplay.innerHTML = 'Bonnes réponses : ';
+            bonnesReponses.forEach(function (index) {
+                let reponse = document.createElement('span');
+                reponse.textContent = reponses[index];
+                bonnesReponsesDisplay.appendChild(reponse);
+                bonnesReponsesDisplay.appendChild(document.createTextNode(', '));
+            });
+
+
+            document.getElementById('quizz-output').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
