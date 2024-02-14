@@ -24,7 +24,7 @@
 
     <main class="grid-item">
         <div id="question-container">
-            <h1>Question n°<?php echo $row['question']; ?></h1>
+            <h1>Question n°<?php echo $row['id']; ?></h1>
             <h2><?php echo $row['question']; ?></h2>
             <form id="quizz" action="" method="POST">
                 <label for="answer">Choix n°1 :</label>
