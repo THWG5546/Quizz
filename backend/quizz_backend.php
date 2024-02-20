@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reponseselect = $_POST['reponse'];
     $valide_reponse = bonnereponse($conn, $reponseselect);
     echo json_encode(['correct' => $valide_reponse]);
-    exit;
+    exit; 
 }
 
 
