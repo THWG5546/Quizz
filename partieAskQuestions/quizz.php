@@ -30,19 +30,19 @@
             <form id="quizz" action="" method="POST">
                 <div id="choix1">
                 <label for="answer">Choix n°1 :</label>
-                <input type="radio" value="<?php echo $row['reponse1']; ?>"><?php echo $row['reponse1']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse1']; ?>" name="questions"><?php echo $row['reponse1']; ?><br>
                 </div>
                 <div id="choix2">
                 <label for="answer">Choix n°2 :</label>
-                <input type="radio" value="<?php echo $row['reponse2']; ?>"><?php echo $row['reponse2']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse2']; ?>" name="questions"><?php echo $row['reponse2']; ?><br>
                 </div>
                 <div id="choix3">
                 <label for="answer">Choix n°3 :</label>
-                <input type="radio" value="<?php echo $row['reponse3']; ?>"><?php echo $row['reponse3']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse3']; ?>" name="questions"><?php echo $row['reponse3']; ?><br>
                 </div>
                 <div id="choix4">
                 <label for="answer">Choix n°4 :</label>
-                <input type="radio" value="<?php echo $row['reponse4']; ?>"><?php echo $row['reponse4']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse4']; ?>" name="questions"><?php echo $row['reponse4']; ?><br>
                 </div>
                 <button type="submit" id="valider_reponse"> Valider</button>
             </form>
