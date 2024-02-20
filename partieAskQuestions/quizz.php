@@ -28,13 +28,13 @@
             <h2><?php echo $row['question']; ?></h2>
             <form id="quizz" action="" method="POST">
                 <label for="answer">Choix n°1 :</label>
-                <input type="radio" value="<?php echo $question['reponse1']; ?>"><?php echo $question['reponse1']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse1']; ?>"><?php echo $row['reponse1']; ?><br>
                 <label for="answer">Choix n°2 :</label>
-                <input type="radio" value="<?php echo $question['reponse2']; ?>"><?php echo $question['reponse2']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse2']; ?>"><?php echo $row['reponse2']; ?><br>
                 <label for="answer">Choix n°3 :</label>
-                <input type="radio" value="<?php echo $question['reponse3']; ?>"><?php echo $question['reponse3']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse3']; ?>"><?php echo $row['reponse3']; ?><br>
                 <label for="answer">Choix n°4 :</label>
-                <input type="radio" value="<?php echo $question['reponse4']; ?>"><?php echo $question['reponse4']; ?><br>
+                <input type="radio" value="<?php echo $row['reponse4']; ?>"><?php echo $row['reponse4']; ?><br>
             </form>
     </main>
 
