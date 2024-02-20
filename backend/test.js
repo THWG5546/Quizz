@@ -41,14 +41,14 @@ function showQuestion(questionData) {
 
 function validateAnswer(isCorrect) {
     if (isCorrect) {
-        score++;
+        note++;
     }
-    currentQuestionIndex++;
+    questionIndex++;
     fetchNextQuestion();
 }
 
 function fetchNextQuestion() {
-    fetch('fetch_question.php?id=' + currentQuestionIndex)
+    fetch('fetch_question.php?id=' + questionIndex)
         .then(response => response.json())
         .then(questionData => {
             if (questionData) {
@@ -64,7 +64,7 @@ function showResult() {
     answersElement.style.display = 'none';
     document.getElementById('validate-btn').style.display = 'none';
     document.getElementById('result-container').style.display = 'block';
-    scoreElement.textContent = score;
+    noteElement.textContent = note;
 }
 
 fetchNextQuestion();
