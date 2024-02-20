@@ -2,6 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'db_connect.php';
     // Collecte des data du form
+    $id = htmlspecialchars($_REQUEST['id']);
     $question = htmlspecialchars($_REQUEST['question']);
     $reponse1 = htmlspecialchars($_REQUEST['reponse1']);
     $reponse2 = htmlspecialchars($_REQUEST['reponse2']);
