@@ -1,14 +1,7 @@
 <?php
 include 'db_connect.php';
 
-$id = htmlspecialchars($_GET['id']);
-$question = htmlspecialchars($_REQUEST['question']);
-$reponse1 = htmlspecialchars($_REQUEST['reponse1']);
-$reponse2 = htmlspecialchars($_REQUEST['reponse2']);
-$reponse3 = htmlspecialchars($_REQUEST['reponse3']);
-$reponse4 = htmlspecialchars($_REQUEST['reponse4']);
-$bonnereponse = htmlspecialchars($_REQUEST['bonnereponse']);
-
+$id = $_GET['id'];
 $sql = "SELECT * FROM quizz WHERE id = $id";
 $result = $conn->query($sql);
 
