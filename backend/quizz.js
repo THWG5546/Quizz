@@ -17,6 +17,13 @@ $(document).ready(function () {
             });
     });
 });
+
+let questionIndex = 0;
+let note = 0;
+
+const questionElement = document.getElementById('question');
+const answersElement = document.getElementById('answers');
+const scoreElement = document.getElementById('score');
 /*$("#valider_reponse").click(function () {
     $("#question").load("maData.txt", function (repTxt, repStatus, xhr) {
         if (repStatus == "success")

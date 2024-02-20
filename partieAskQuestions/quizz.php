@@ -12,11 +12,11 @@
     <header class='grid-item'>
         <?php include "../backend/quizz_backend.php" ?>
         <div id="logo_easy">
-        <img src="img/logo.png" alt="logo du site web">
+            <img src="img/logo.png" alt="logo du site web">
         </div>
         <nav>
             <div>
-            <a href="https://google.com">Accueil</a>
+                <a href="https://google.com">Accueil</a>
             </div>
         </nav>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
