@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     }
     $stmt->close();
 } else {
-    echo "ID Inconnu";
+    echo "ID Inconnuuuu";
 }
 
 $conn->close();

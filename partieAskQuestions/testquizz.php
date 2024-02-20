@@ -20,7 +20,13 @@
             </div>
         </nav>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="/backend/test.js"></script>
+        <?php
+        // Obtenez l'ID à partir de l'URL si elle est fournie
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
+        ?>
+        <script src="../backend/test.js"></script>
+        <script>
+        </script>
     </header>
 
     <main class="grid-item">

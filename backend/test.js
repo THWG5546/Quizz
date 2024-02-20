@@ -1,23 +1,3 @@
-/*$(document).ready(function () {
-    document.getElementById('quizz').addEventListener('submit', function (event) {
-        event.preventDefault(); // Empêcher le formulaire de se soumettre normalement
-        var formData = new FormData(this);
-        fetch(window.location.href, {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.correct) {
-                    alert('Bonne réponse!');
-                } else {
-                    alert('Mauvaise réponse!');
-                }
-                location.reload(); // Recharger la page pour passer à la prochaine question
-            });
-    });
-});*/
-
 let questionIndex = 1;
 let note = 0;
 
@@ -46,17 +26,13 @@ function validateAnswer(isCorrect) {
     questionIndex++;
     fetchNextQuestion();
 }
+$("#valider_reponse").click(function validateAnswer(isCorrect) {
+});
 
 function fetchNextQuestion() {
-    fetch('fetch_question.php?id=' + questionIndex)
-        .then(response => response.json())
-        .then(questionData => {
-            if (questionData) {
-                showQuestion(questionData);
-            } else {
-                showResult();
-            }
-        });
+    let questionId = questionIndex;
+    let url = 'http://localhost/partieAskQuestions/testquizz.php?id=' + questionId;
+    window.location.href = url;
 }
 
 function showResult() {
@@ -66,8 +42,6 @@ function showResult() {
     document.getElementById('result-container').style.display = 'block';
     noteElement.textContent = note;
 }
-
-fetchNextQuestion();
 
 /*$("#valider_reponse").click(function () {
     $("#question").load("maData.txt", function (repTxt, repStatus, xhr) {
