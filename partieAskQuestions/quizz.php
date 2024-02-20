@@ -9,14 +9,15 @@
 </head>
 
 <body class="grid-container">
-    <h3>Test</h3>
-    <header>
+    <header class='grid-item'>
         <?php include "../backend/quizz_backend.php" ?>
-        <img src="img/logo.png" alt="logo du site web" id="logo_easy">
+        <div id="logo_easy">
+        <img src="img/logo.png" alt="logo du site web">
+        </div>
         <nav>
+            <div>
             <a href="https://google.com">Accueil</a>
-            <a href="https://yahoo.com">Question precedente</a>
-            <a href="https://www.youtube.com/">autre</a>
+            </div>
         </nav>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="../backend/quizz.js"></script>
@@ -27,21 +28,25 @@
             <h1>Question n°<?php echo $row['id']; ?></h1>
             <h2><?php echo $row['question']; ?></h2>
             <form id="quizz" action="" method="POST">
+                <div id="choix1">
                 <label for="answer">Choix n°1 :</label>
                 <input type="radio" value="<?php echo $row['reponse1']; ?>"><?php echo $row['reponse1']; ?><br>
+                </div>
+                <div id="choix2">
                 <label for="answer">Choix n°2 :</label>
                 <input type="radio" value="<?php echo $row['reponse2']; ?>"><?php echo $row['reponse2']; ?><br>
+                </div>
+                <div id="choix3">
                 <label for="answer">Choix n°3 :</label>
                 <input type="radio" value="<?php echo $row['reponse3']; ?>"><?php echo $row['reponse3']; ?><br>
+                </div>
+                <div id="choix4">
                 <label for="answer">Choix n°4 :</label>
                 <input type="radio" value="<?php echo $row['reponse4']; ?>"><?php echo $row['reponse4']; ?><br>
+                </div>
+                <button type="submit" id="valider_reponse"> Valider</button>
             </form>
     </main>
-
-    <footer class="grid-item">
-        <a href="">Question précédente</a>
-        <button type="submit" id="valider_reponse"> Valider</button>
-    </footer>
 
 </body>
 

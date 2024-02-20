@@ -1,33 +1,108 @@
-.grid-container
-{
+.grid-container {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 0.3fr 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+  
+header {
+    background-color: #1f65f2;
+    color: white;
+}
+
+img {
+    height: 90px;
 }
 
 #logo_easy {
-    height: 70px;
-    width: auto;
+    margin: 0;
+    margin-right: auto;
+    padding: 0;
 }
-
-header {
-    background-color: #1f65f2;
-    padding: 20px;
+  
+nav {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-#logo_easy {
-    width: 100px; /* Ajustez la taille de votre logo selon vos besoins */
+nav > div:not(#logo_easy) {
+    margin-left: auto;
+    
 }
 
-nav a {
+a {
     color: white;
-    text-decoration: none;
-    margin-left: 20px;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav > div:not(#logo_easy, .navDiv) {
+    background-color: #4CAF50;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    padding: 10px 30px;
+    font-weight: bold;
+    
+}
+
+nav > div:not(#logo_easy, .navDiv):hover {
+    opacity: 0.8;
+}
+  
+main {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr;
+}
+
+
+form > div {
+    margin: 10px;
+    padding: 30px;
+    font-weight: bold;
+    font-size: large;
+}
+input[type=radio] {
+    transform: scale(1.2);
+}
+h1 {
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100%;
+    font-weight: normal;
+
+}
+
+h2 {
+    grid-area: 2 / 1 / 3 / 2;
+    font-weight: normal;
+}
+
+
+#choix1 {
+    grid-area: 3 / 1 / 4 / 2;
+}
+  
+#choix2 {
+    grid-area: 4 / 1 / 5 / 2;
+}
+
+#choix3 {
+    grid-area: 5 / 1 / 6 / 2;
+}
+
+#choix4 {
+    grid-area: 6 / 1 / 7 / 2;
+}
+
+
+
+#valider_reponse {
+    background-color: #1f65f2;
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    font-size: 17px;
+    border-radius: 100px;
+    cursor: pointer;
 }
