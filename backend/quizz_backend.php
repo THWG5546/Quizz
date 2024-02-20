@@ -21,29 +21,3 @@ if (isset($_GET['id'])) {
 }
 
 $conn->close();
-?>
-
-/*function question_actu($conn)
-{
-$query = "SELECT * FROM quizz ORDER BY id DESC LIMIT 1";
-$result = $conn->query($query);
-$row = $result->fetch_assoc();
-return $row;
-}
-
-function bonnereponse($conn, $reponseselect)
-{
-$row = question_actu($conn);
-$bonnereponse = $row['bonnereponse'];
-return $reponseselect == $bonnereponse;
-}
-
-$row = question_actu($conn);
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-$reponseselect = $_POST['reponse'];
-$valide_reponse = bonnereponse($conn, $reponseselect);
-echo json_encode(['correct' => $valide_reponse]);
-exit;
-}*/
-
-$connexion->close();
