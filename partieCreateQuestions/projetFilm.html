@@ -27,7 +27,6 @@
             </div>
 
             <div id="reponses-container" class="reponses-container">
-
             </div>
 
             <button type="button" id="ajouter-reponse-btn" onclick="ajouterReponse()">Ajouter une réponse</button>
@@ -49,21 +48,25 @@
         let nombreReponses = 1;
 
         function ajouterReponse() {
-            let reponsesContainer = document.getElementById('reponses-container');
-            let nouvelleReponseInput = document.createElement('input');
-            nouvelleReponseInput.type = 'text';
-            nouvelleReponseInput.name = 'reponse' + nombreReponses;
-            nouvelleReponseInput.placeholder = 'Réponse ' + nombreReponses;
-            reponsesContainer.appendChild(nouvelleReponseInput);
+            if (nombreReponses < 5) {
+                let reponsesContainer = document.getElementById('reponses-container');
+                let nouvelleReponseInput = document.createElement('input');
+                nouvelleReponseInput.type = 'text';
+                nouvelleReponseInput.name = 'reponse' + nombreReponses;
+                nouvelleReponseInput.placeholder = 'Réponse ' + nombreReponses;
+                reponsesContainer.appendChild(nouvelleReponseInput);
 
-            // Créer une case à cocher pour chaque nouvelle réponse ajoutée
-            let nouvelleCheckBox = document.createElement('input');
-            nouvelleCheckBox.type = 'checkbox';
-            nouvelleCheckBox.id = 'checkbox' + nombreReponses;
-            reponsesContainer.appendChild(nouvelleCheckBox);
+                // Créer une case à cocher pour chaque nouvelle réponse ajoutée
+                let nouvelleCheckBox = document.createElement('input');
+                nouvelleCheckBox.type = 'checkbox';
+                nouvelleCheckBox.id = 'checkbox' + nombreReponses;
+                reponsesContainer.appendChild(nouvelleCheckBox);
 
-            reponsesContainer.appendChild(document.createElement('br'));
-            nombreReponses++;
+                reponsesContainer.appendChild(document.createElement('br'));
+                nombreReponses++;
+            } else {
+                alert('Vous ne pouvez ajouter plus de 4 réponses.');
+            }
         }
 
         document.getElementById('quizz-form').addEventListener('submit', function (event) {
@@ -87,12 +90,10 @@
                 }
             }
 
-
             if (reponses.length === 0) {
                 alert('Veuillez entrer au moins une réponse.');
                 return;
             }
-
 
             document.getElementById('question-display').innerText = question;
 
@@ -114,7 +115,6 @@
                 bonnesReponsesDisplay.appendChild(reponse);
                 bonnesReponsesDisplay.appendChild(document.createTextNode(', '));
             });
-
 
             document.getElementById('quizz-output').style.display = 'block';
         });

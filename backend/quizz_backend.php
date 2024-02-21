@@ -1,7 +1,7 @@
 <?php
 include 'db_connect.php';
 
-if (isset($_GET['id'])) {
+if ((isset($_GET['id'])) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM quizz WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     }
     $stmt->close();
 } else {
-    echo "ID Inconnuuuu";
+    echo "ID non spécifié";
 }
 
 $conn->close();
