@@ -30,15 +30,23 @@
         </form>
 
         <div id="id-output" class="sous-titre-container" style="display: none;">
-            <p>Votre nom :</p>
+            <p>Votre nom est :</p>
             <p id="name-display"></p>
 
-            <p>Votre identifiant :</p>
+            <p>Votre identifiant pour le Quizz est :</p>
             <p id="id-display"></p>
         </div>
     </div>
 
-
+    <script>
+        document.getElementById('name-form').addEventListener('submit', function (event) {
+            document.getElementById('valider-nom-btn').style.display = 'none';
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            document.getElementById('name-display').textContent = name;
+            document.getElementById('id-output').style.display = 'block';
+        });
+    </script>
 </body>
 
 </html>
