@@ -13,3 +13,4 @@ if ($conn->connect_error) {
 } else {
     echo "<script>console.log('Connection OK');</script>";
 }
+?>

@@ -20,7 +20,7 @@
             <h1 class="titre">Bienvenue sur EasyQuizz !</h1>
         </div>
 
-        <form id="name-form" action="submit_id.php">
+        <form id="name-form" action="../submit_id.php" method="POST">
             <div class="sous-titre-container phrase-container">
                 <label for="name">Entrez votre nom :</label><br>
                 <input type="text" id="name" name="name" placeholder="Votre nom ici" required><br>
@@ -38,37 +38,7 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('name-form').addEventListener('submit', function (event) {
-            event.preventDefault();
 
-            let name = document.getElementById('name').value;
-
-            if (name.trim() === '') {
-                alert('Veuillez entrer votre nom.');
-                return;
-            }
-
-            
-            let xhr = new XMLHttpRequest();
-            xhr.open('POST', 'add_user.php', true);
-            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                  
-                    let response = JSON.parse(xhr.responseText);
-                    document.getElementById('name-display').innerText = name;
-                    document.getElementById('id-display').innerText = response.id;
-
-                    // Masquer le bouton Valider après validation
-                    document.getElementById('valider-nom-btn').style.display = 'none';
-
-                    document.getElementById('id-output').style.display = 'block';
-                }
-            };
-            xhr.send('name=' + encodeURIComponent(name));
-        });
-    </script>
 </body>
 
 </html>

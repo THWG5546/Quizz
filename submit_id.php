@@ -1,11 +1,11 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'connect_db.php';
+    include 'connect_db_id.php';
     $name = htmlspecialchars($_REQUEST['name']);
     if (empty($name)) {
         echo "Name is required";
     } else {
-        $sql = "INSERT INTO users (name) VALUES (?)";
+        $sql = "INSERT INTO informations (name) VALUES (?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $name);
 
@@ -19,4 +19,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
     }
 }
-?>

@@ -1,4 +1,4 @@
-9<?php
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'db_connect.php';
     // Collecte des data du form
