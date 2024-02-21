@@ -1,0 +1,73 @@
+body {
+    background-image: url("https://img.freepik.com/vecteurs-premium/motif-marbre-couleur-fond-complet_67383-13.jpg?w=996");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    }
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(85, 67, 82, 0.371);
+    z-index: -1;
+}
+
+.bande {
+    background-color: #264075;
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+div.clickEffect{
+    position:fixed;
+    box-sizing:border-box;
+    border-style:solid;
+    border-color:#FFFFFF;
+    border-radius:50%;
+    animation:clickEffect 0.4s ease-out;
+    z-index:99999;
+}
+@keyframes clickEffect{
+    0%{
+        opacity:1;
+        width:0.5em; height:0.5em;
+        margin:-0.25em;
+        border-width:0.5em;
+    }
+    100%{
+        opacity:0.2;
+        width:15em; height:15em;
+        margin:-7.5em;
+        border-width:0.03em;
+        }
+}
+
+.logo {
+
+    transition: transform .2s; /* Animation */
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  
+  .logo:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+
+
+  @media screen and (max-width: 768px) and (orientation: portrait) {
+
+    body {
+      font-size: 16px;
+    }
+  }
