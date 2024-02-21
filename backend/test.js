@@ -1,67 +1,52 @@
-let questionIndex = 1;
-let note = 0;
+$(document).ready(function () {
+    questionIndex = localStorage.getItem('questionIndex') || 1;
+    let note = 0;
+    const questionElement = document.getElementById('question');
+    const answersElement = document.getElementById('answers');
+    const noteElement = document.getElementById('note');
 
-const questionElement = document.getElementById('question');
-const answersElement = document.getElementById('answers');
-const noteElement = document.getElementById('note');
-
-function showQuestion(questionData) {
-    questionElement.textContent = questionData.question;
-    answersElement.innerHTML = '';
-    for (let i = 1; i <= 4; i++) {
-        const option = questionData['option' + i];
-        const button = document.createElement('button');
-        button.textContent = option;
-        button.addEventListener('click', () => {
-            validateAnswer(option === questionData.correctAnswer);
-        });
-        answersElement.appendChild(button);
+    function showQuestion(questionData) {
+        questionElement.textContent = questionData.question;
+        answersElement.innerHTML = '';
+        for (let i = 1; i <= 4; i++) {
+            const option = questionData['reponse' + i];
+            const button = document.createElement('button');
+            button.textContent = option;
+            button.addEventListener('click', () => {
+                validateAnswer(option === questionData.bonnereponse);
+            });
+            answersElement.appendChild(button);
+        }
     }
-}
-
-function validateAnswer(isCorrect) {
-    if (isCorrect) {
-        note++;
+    function nextQuestion() {
+        questionIndex++;
+        localStorage.setItem('questionIndex', questionIndex);
+        fetchNextQuestion();
     }
-    questionIndex++;
-    fetchNextQuestion();
-}
-$("#valider_reponse").click(function validateAnswer(isCorrect) {
-});
+    function validateAnswer(isCorrect) {
+        if (isCorrect) {
+            note++;
+        }
+    }
 
-function fetchNextQuestion() {
-    let questionId = questionIndex;
-    let url = 'http://localhost/partieAskQuestions/testquizz.php?id=' + questionId;
-    window.location.href = url;
-}
-
-function showResult() {
-    questionElement.style.display = 'none';
-    answersElement.style.display = 'none';
-    document.getElementById('validate-btn').style.display = 'none';
-    document.getElementById('result-container').style.display = 'block';
-    noteElement.textContent = note;
-}
-
-/*$("#valider_reponse").click(function () {
-    $("#question").load("maData.txt", function (repTxt, repStatus, xhr) {
-        if (repStatus == "success")
-            alert("External content loaded successfully!");
-        if (repStatus == "error")
-            alert("Error: " + xhr.status + ": " + xhr.statusText);
-        $('#monBouton').hide();
-        $('#monBouton2').show();
-        $("#monBloc p").text(data.body);
+    document.getElementById('valider_reponse').addEventListener('click', function () {
+        console.log("Le bouton de validation a été cliqué !");
+        nextQuestion();
     });
+
+    function fetchNextQuestion() {
+        fetch('../backend/quizz_backend.php?id=' + questionIndex)
+            .then(response => response.json())
+            .then(questionData => {
+                if (questionData) {
+                    showQuestion(questionData);
+                } else {
+                    console.log("Question non trouvée");
+                }
+            })
+            .catch(error => console.error('Erreur lors de la récupération de la question:', error));
+        let questionId = questionIndex;
+        let url = 'http://127.0.0.1:3000/partieAskQuestions/testquizz.html?id=' + questionId;
+        window.location.href = url;
+    }
 });
-$("#monBouton2").click(function () {
-    $("#monBloc").load("maData2.txt", function (repTxt, repStatus, xhr) {
-        if (repStatus == "success")
-            alert("External content loaded successfully!");
-        if (repStatus == "error")
-            alert("Error: " + xhr.status + ": " + xhr.statusText)
-        $('#monBouton').show();
-        $("#monBloc p").text(data2.body);
-    });
-});
-});*/
