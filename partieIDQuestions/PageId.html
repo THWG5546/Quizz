@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyQuizz</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/logo">
+</head>
+
+<body>
+    <div class="bande">
+        <img class="logo" src="img/logo.png" alt="logo">
+        <h1 class="titre">EasyQuizz!</h1>
+    </div>
+
+    <div class="container">
+        <div class="titre-container">
+            <h1 class="titre">Bienvenue sur EasyQuizz !</h1>
+        </div>
+
+        <form id="name-form" action="submit_id.php">
+            <div class="sous-titre-container phrase-container">
+                <label for="name">Entrez votre nom :</label><br>
+                <input type="text" id="name" name="name" placeholder="Votre nom ici" required><br>
+            </div>
+
+            <button type="submit" id="valider-nom-btn">Valider</button>
+        </form>
+
+        <div id="id-output" class="sous-titre-container" style="display: none;">
+            <p>Votre nom :</p>
+            <p id="name-display"></p>
+
+            <p>Votre identifiant :</p>
+            <p id="id-display"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('name-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let name = document.getElementById('name').value;
+
+            if (name.trim() === '') {
+                alert('Veuillez entrer votre nom.');
+                return;
+            }
+
+            
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'add_user.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                  
+                    let response = JSON.parse(xhr.responseText);
+                    document.getElementById('name-display').innerText = name;
+                    document.getElementById('id-display').innerText = response.id;
+
+                    // Masquer le bouton Valider après validation
+                    document.getElementById('valider-nom-btn').style.display = 'none';
+
+                    document.getElementById('id-output').style.display = 'block';
+                }
+            };
+            xhr.send('name=' + encodeURIComponent(name));
+        });
+    </script>
+</body>
+
+</html>
