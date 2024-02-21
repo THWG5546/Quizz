@@ -8,6 +8,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    position: relative;
 }
 
 body::before {
@@ -62,7 +63,8 @@ input[type="text"] {
 
 button[type="submit"],
 #ajouter-reponse-btn,
-#valider-quizz-btn {
+#valider-quizz-btn,
+#valider-nom-btn {
     padding: 10px 20px;
     background-color: #1f65f2;
     color: white;
@@ -75,7 +77,8 @@ button[type="submit"],
 
 button[type="submit"]:hover,
 #ajouter-reponse-btn:hover,
-#valider-quizz-btn:hover {
+#valider-quizz-btn:hover,
+#valider-nom-btn:hover {
     background-color: #112e68;
 }
 
@@ -100,43 +103,5 @@ button[type="submit"]:hover,
     padding: 10px;
     border-radius: 4px;
     margin-top: 20px;
-}
-
-.reponses-container input[type="text"] {
-    width: 350px;
-    padding: 10px;
-    margin: 15px 0 10px;
-    border: 15px solid #1f65f2;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.reponses-container label {
-    font-weight: bold;
-    color: rgb(190, 30, 30);
-}
-
-div.clickEffect{
-    position:fixed;
-    box-sizing:border-box;
-    border-style:solid;
-    border-color:#FFFFFF;
-    border-radius:50%;
-    animation:clickEffect 0.4s ease-out;
-    z-index:99999;
-}
-@keyframes clickEffect{
-    0%{
-        opacity:1;
-        width:0.5em; height:0.5em;
-        margin:-0.25em;
-        border-width:0.5em;
-    }
-    100%{
-        opacity:0.2;
-        width:15em; height:15em;
-        margin:-7.5em;
-        border-width:0.03em;
-        }
 }
 
