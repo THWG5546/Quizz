@@ -20,7 +20,7 @@
             <h1 class="titre">Créez votre propre Quizz ! </h1>
         </div>
 
-        <form id="quizz-form" action="submit.php" method="POST">
+        <form id="quizz-form" action="/submit_id.php" method="POST">
             <div class="sous-titre-container phrase-container">
                 <label for="question">Entrez Votre Question :</label><br>
                 <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
@@ -60,7 +60,7 @@
                 let nouvelleCheckBox = document.createElement('input');
                 nouvelleCheckBox.type = 'checkbox';
                 nouvelleCheckBox.name = 'bonneReponse';
-                nouvelleCheckBox.value = nombreReponses; 
+                nouvelleCheckBox.value = nombreReponses;
                 reponsesContainer.appendChild(nouvelleCheckBox);
 
                 reponsesContainer.appendChild(document.createElement('br'));
