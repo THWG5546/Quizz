@@ -20,7 +20,7 @@
             <h1 class="titre">Créez votre propre Quizz ! </h1>
         </div>
 
-        <form id="quizz-form">
+        <form id="quizz-form" action="submit.php" method="POST">
             <div class="sous-titre-container phrase-container">
                 <label for="question">Entrez Votre Question :</label><br>
                 <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <script> // a modifer pas sur du system 
+    <script>
         let nombreReponses = 1;
 
         function ajouterReponse() {
@@ -59,7 +59,8 @@
                 // Créer une case à cocher pour chaque nouvelle réponse ajoutée
                 let nouvelleCheckBox = document.createElement('input');
                 nouvelleCheckBox.type = 'checkbox';
-                nouvelleCheckBox.id = 'checkbox' + nombreReponses;
+                nouvelleCheckBox.name = 'bonneReponse';
+                nouvelleCheckBox.value = nombreReponses; 
                 reponsesContainer.appendChild(nouvelleCheckBox);
 
                 reponsesContainer.appendChild(document.createElement('br'));
@@ -68,56 +69,6 @@
                 alert('Vous ne pouvez ajouter plus de 4 réponses.');
             }
         }
-
-        document.getElementById('quizz-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            let question = document.getElementById('question').value;
-            let reponses = [];
-            let bonnesReponses = []; // Stocker les indices des bonnes réponses sélectionnées
-
-            // Récupérer les réponses et leurs états (sélectionnées ou non)
-            for (let i = 1; i < nombreReponses; i++) {
-                let reponseInput = document.getElementById('reponse' + i);
-                let checkBox = document.getElementById('checkbox' + i);
-
-                if (reponseInput.value.trim() !== '') {
-                    reponses.push(reponseInput.value);
-
-                    if (checkBox.checked) {
-                        bonnesReponses.push(i - 1);
-                    }
-                }
-            }
-
-            if (reponses.length === 0) {
-                alert('Veuillez entrer au moins une réponse.');
-                return;
-            }
-
-            document.getElementById('question-display').innerText = question;
-
-            // Afficher les réponses
-            let reponsesDisplay = document.getElementById('reponses-display');
-            reponsesDisplay.innerHTML = '';
-            reponses.forEach(function (reponse) {
-                let li = document.createElement('li');
-                li.textContent = reponse;
-                reponsesDisplay.appendChild(li);
-            });
-
-            // Afficher les bonnes réponses sélectionnées
-            let bonnesReponsesDisplay = document.getElementById('bonnes-reponses-display');
-            bonnesReponsesDisplay.innerHTML = 'Bonnes réponses : ';
-            bonnesReponses.forEach(function (index) {
-                let reponse = document.createElement('span');
-                reponse.textContent = reponses[index];
-                bonnesReponsesDisplay.appendChild(reponse);
-                bonnesReponsesDisplay.appendChild(document.createTextNode(', '));
-            });
-
-            document.getElementById('quizz-output').style.display = 'block';
-        });
     </script>
 </body>
 
