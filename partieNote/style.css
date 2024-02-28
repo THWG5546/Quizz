@@ -8,6 +8,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    position: relative;
 }
 
 body::before {
@@ -48,13 +49,9 @@ body::before {
     text-align: center;
     color: white;
     margin-top: 120px;
-    padding: 20px;
-    
-    border-radius: 20px;
-
 }
 
-input[type="number"] {
+input[type="text"] {
     width: 350px;
     padding: 10px;
     margin: 5px 0 10px;
@@ -62,11 +59,10 @@ input[type="number"] {
     border-radius: 4px;
     box-sizing: border-box;
     outline: none;
-    color: #264075;
-    background-color: #FFFFFF;
 }
 
-button[type="submit"] {
+button[type="submit"],
+#valider-nom-btn {
     padding: 10px 20px;
     background-color: #1f65f2;
     color: white;
@@ -77,15 +73,16 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-button[type="submit"]:hover {
-    background-color: #74819a;
+button[type="submit"]:hover,
+#valider-nom-btn:hover {
+    background-color: #1f65f2;
 }
 
 .titre-container,
 .sous-titre-container {
     padding: 10px 20px;
     border-radius: 20px;
-    background-color: rgba(31, 65, 242, 0.85);
+    background-color: #1f65f2;
     margin-bottom: 20px;
 }
 
@@ -94,12 +91,12 @@ button[type="submit"]:hover {
     margin: 0;
 }
 
-#quizz-output {
-    background-color: #324263;
+#note-output {
+    background-color: #1f65f2;
     color: white;
     font-weight: bold;
     padding: 10px;
     border-radius: 4px;
     margin-top: 20px;
-    display: none; 
+    display: none;
 }

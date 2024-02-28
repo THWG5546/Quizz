@@ -8,7 +8,6 @@ $(document).ready(function () {
     const noteElement = document.getElementById('note');
     getQuestion()
     function showQuestion(questionData) {
-        idquestionElement.innerHTML = questionData.id;
         questionElement.textContent = questionData.question;
         answersElement.innerHTML = '';
         for (let i = 1; i <= 4; i++) {
