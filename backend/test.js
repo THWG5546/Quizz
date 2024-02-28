@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     function fetchNextQuestion() {
-        fetch('../backend/quizz_backend.php?id=' + questionIndex)
+        fetch('http://localhost/backend/quizz_backend.php?id=' + 1)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {

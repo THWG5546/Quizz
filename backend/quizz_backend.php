@@ -1,6 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: https://thwg5546.github.io");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 include 'db_connect.php';
-
 if ((isset($_GET['id'])) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM quizz WHERE id = ?";
@@ -14,6 +16,7 @@ if ((isset($_GET['id'])) && !empty($_GET['id'])) {
         echo json_encode($row);
     } else {
         echo json_encode((object) array());
+        echo "Pas de ligne";
     }
     $stmt->close();
 } else {
