@@ -22,17 +22,19 @@
             <h1 class="titre">Faites votre propre Quizz ! </h1>
         </div>
 
-        <form id="quizz-form" action="/submit_id.php" method="POST">
+        <form id="quizz-form" action="/submit_fairequizz.php" method="POST">
             <div class="sous-titre-container phrase-container">
                 <label for="quiz-id">Entrez l'ID de votre Quizz :</label><br>
                 <input type="number" id="quiz-id" name="quiz-id" placeholder="ID de votre quizz" required><br>
+                <label for="quiz-id">Entrez votre nom</label><br>
+                <input type="number" id="quiz-name" name="quiz-name" placeholder="Votre nom" required><br>
             </div>
 
             <button type="submit" id="valider-quizz-btn">Valider</button>
         </form>
 
         <div id="quizz-output" class="sous-titre-container" style="display: none;">
-            
+
         </div>
     </div>
 </body>

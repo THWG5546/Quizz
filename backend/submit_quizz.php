@@ -4,19 +4,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collecte des data du form
     $id = htmlspecialchars($_REQUEST['id']);
     $question = htmlspecialchars($_REQUEST['question']);
-    $reponse1 = htmlspecialchars($_REQUEST['reponse1']);
-    $reponse2 = htmlspecialchars($_REQUEST['reponse2']);
-    $reponse3 = htmlspecialchars($_REQUEST['reponse3']);
-    $reponse4 = htmlspecialchars($_REQUEST['reponse4']);
-    $bonnereponse = htmlspecialchars($_REQUEST['bonnereponse']);
 
-    if (empty($question) || empty($reponse1) || empty($reponse2) || empty($reponse3) || empty($reponse4) || empty($bonnereponse)) {
+    if (empty($question)) {
         echo "Tous les éléments sont requis !";
     } else {
-        $sql = "INSERT INTO quizz (question, reponse1, reponse2, reponse3,reponse4,bonnereponse) VALUES (?, ?, ?,?,?,?)";
+        $sql = "INSERT INTO quizz (question) VALUES (?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $question, $reponse1, $reponse2, $reponse3, $reponse4, $bonnereponse);
-
+        $stmt->bind_param("s", $question);
         if ($stmt->execute()) {
             echo "New record created successfully";
         } else {
