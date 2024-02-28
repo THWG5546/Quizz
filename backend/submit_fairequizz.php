@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ss", $nom, $prenom);
 
         if ($stmt->execute()) {
-            echo "New record created successfully";
         } else {
             echo "Error: " . $stmt->error;
         }
