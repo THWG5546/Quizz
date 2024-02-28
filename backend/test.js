@@ -1,10 +1,12 @@
 $(document).ready(function () {
+    localStorage.setItem('questionIndex', 1);
     questionIndex = localStorage.getItem('questionIndex') || 1;
     let note = 0;
+    const idquestionElement = document.getElementById('idQuestion');
     const questionElement = document.getElementById('question');
     const answersElement = document.getElementById('answers');
     const noteElement = document.getElementById('note');
-
+    getQuestion()
     function showQuestion(questionData) {
         questionElement.textContent = questionData.question;
         answersElement.innerHTML = '';
@@ -18,6 +20,11 @@ $(document).ready(function () {
             answersElement.appendChild(button);
         }
     }
+    document.getElementById('valider_reponse').addEventListener('click', function () {
+        console.log("Le bouton de validation a été cliqué !");
+        nextQuestion();
+    });
+
     function nextQuestion() {
         questionIndex++;
         localStorage.setItem('questionIndex', questionIndex);
@@ -29,13 +36,8 @@ $(document).ready(function () {
         }
     }
 
-    document.getElementById('valider_reponse').addEventListener('click', function () {
-        console.log("Le bouton de validation a été cliqué !");
-        nextQuestion();
-    });
-
-    function fetchNextQuestion() {
-        fetch('http://localhost/backend/quizz_backend.php?id=' + 1)
+    function getQuestion() {
+        fetch('http://localhost/backend/quizz_backend.php?id=' + questionIndex)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
@@ -46,8 +48,13 @@ $(document).ready(function () {
                 }
             })
             .catch(error => console.error('Erreur lors de la récupération de la question:', error));
-        //let questionId = questionIndex;
-        //let url = 'http://127.0.0.1:3000/partieAskQuestions/testquizz.html?id=' + questionId;
-        //window.location.href = url;
+    }
+    function fetchNextQuestion() {
+        let questionId = questionIndex;
+        let url = 'https://thwg5546.github.io/Quizz/partieAskQuestions/testquizz.html?id=' + questionId;
+        window.location.href = url;
     }
 });
+
+
+
