@@ -49,12 +49,13 @@ body::before {
     color: white;
     margin-top: 120px;
     padding: 20px;
-    
+
     border-radius: 20px;
 
 }
 
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
     width: 350px;
     padding: 10px;
     margin: 5px 0 10px;
@@ -101,7 +102,7 @@ button[type="submit"]:hover {
     padding: 10px;
     border-radius: 4px;
     margin-top: 20px;
-    display: none; 
+    display: none;
 }
 
 @media screen and (min-width: 1024px) and (orientation: landscape) {
@@ -117,39 +118,45 @@ button[type="submit"]:hover {
         padding: 0 20px;
         z-index: 1000;
     }
+
     .logo {
 
         transition: transform .2s;
         width: 100px;
         height: 100px;
         margin: 0 auto;
-      }
-    
-  }
-  .logo:hover {
-    transform: scale(1.5);
-  }
-  @keyframes clickEffect{
-    0%{
-        opacity:1;
-        width:0.5em; height:0.5em;
-        margin:-0.25em;
-        border-width:0.5em;
     }
-    100%{
-        opacity:0.2;
-        width:15em; height:15em;
-        margin:-7.5em;
-        border-width:0.03em;
-        }
+
 }
 
-  div.clickEffect{
-    position:fixed;
-    box-sizing:border-box;
-    border-style:solid;
-    border-color:#FFFFFF;
-    border-radius:50%;
-    animation:clickEffect 0.4s ease-out;
-    z-index:99999;
+.logo:hover {
+    transform: scale(1.5);
+}
+
+@keyframes clickEffect {
+    0% {
+        opacity: 1;
+        width: 0.5em;
+        height: 0.5em;
+        margin: -0.25em;
+        border-width: 0.5em;
+    }
+
+    100% {
+        opacity: 0.2;
+        width: 15em;
+        height: 15em;
+        margin: -7.5em;
+        border-width: 0.03em;
+    }
+}
+
+div.clickEffect {
+    position: fixed;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-radius: 50%;
+    animation: clickEffect 0.4s ease-out;
+    z-index: 99999;
 }
