@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'backend/db_connect.php.php'; 
+    include 'backend/db_connect.php'; 
 
     // Traitement pour les entrées de quizz
     if (isset($_POST['question'])) {
