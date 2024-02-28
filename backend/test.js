@@ -34,7 +34,8 @@ $(document).ready(function () {
             note++;
         }
     }
-
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
     function getQuestion() {
         fetch('http://localhost/backend/quizz_backend.php?id=' + questionIndex)
             .then(response => response.json())
