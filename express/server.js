@@ -22,12 +22,6 @@ app.get('/reponses', (req, res) => {
 });
 
 
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connecté à la base de données MySQL');
-});
 
 
 app.listen(port, () => {
