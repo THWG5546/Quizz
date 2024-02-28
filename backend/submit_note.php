@@ -1,5 +1,5 @@
 <?php
-include 'connect_db_id.php';
+include 'db_connect.php';
 
 if ($conn->connect_error) {
     die("La connexion a échoué : " . $conn->connect_error);
