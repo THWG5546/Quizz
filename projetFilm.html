@@ -22,7 +22,7 @@
             <h1 class="titre">Créez votre propre Quizz ! </h1>
         </div>
 
-        <form id="quizz-form" action="submit_id.php" method="POST">
+        <form id="quizz-form" action="submit_id.php" method="post">
             <div class="sous-titre-container phrase-container">
                 <label for="question">Entrez Votre Question :</label><br>
                 <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
@@ -55,6 +55,7 @@
                 let nouvelleReponseInput = document.createElement('input');
                 nouvelleReponseInput.type = 'text';
                 nouvelleReponseInput.name = 'reponse' + nombreReponses;
+                nouvelleReponseInput.id = 'reponse' + nombreReponses;
                 nouvelleReponseInput.placeholder = 'Réponse ' + nombreReponses;
                 reponsesContainer.appendChild(nouvelleReponseInput);
 
