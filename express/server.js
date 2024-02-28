@@ -21,10 +21,6 @@ app.get('/reponses', (req, res) => {
     });
 });
 
-
-
-
-
 app.listen(port, () => {
     console.log(`Le serveur écoute sur le port ${port}`);
 });
@@ -58,5 +54,4 @@ app.listen(port, () => {
         // Appel de la fonction pour récupérer les réponses au chargement de la page
         fetchReponses();
     </script>
-
 */
