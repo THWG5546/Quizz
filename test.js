@@ -51,7 +51,7 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'https://thwg5546.github.io/Quizz/partieAskQuestions/testquizz.html?id=' + questionId;
+        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?id=' + questionId;
         window.location.href = url;
     }
 });
