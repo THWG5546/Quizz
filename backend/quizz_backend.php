@@ -5,7 +5,7 @@ header("Access-Control-Allow-Headers: Content-Type");
 include 'db_connect.php';
 if ((isset($_GET['id'])) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM quizz WHERE id = ?";
+    $sql = "SELECT * FROM questions WHERE idquestions = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
