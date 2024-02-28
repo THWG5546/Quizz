@@ -7,8 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collecte des data du form
     $nom = htmlspecialchars($_REQUEST['quiz-name']);
     $prenom = htmlspecialchars($_REQUEST['quiz-firstname']);
-
-    if (empty($nom) || empty($prenom)) {
+    $idquizz = htmlspecialchars($_REQUEST['quiz-id']);
+    $idquest = 1;
+    if (empty($nom) || empty($prenom) || empty($idquizz)) {
         echo "Tous les éléments sont requis !";
     } else {
         $sql = "INSERT INTO users (nom, prenom) VALUES (?, ?)";
@@ -16,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ss", $nom, $prenom);
 
         if ($stmt->execute()) {
+            header("Location:https://thwg5546.github.io/Quizz/testquizz.html?idquizz=" . $idquizz . "?id=" . $idquest);
         } else {
             echo "Error: " . $stmt->error;
         }
