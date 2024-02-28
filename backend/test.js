@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     function fetchNextQuestion() {
-        fetch('http://localhost:3000/backend/quizz_backend.php?id=' + 1)
+        fetch('http://localhost/backend/quizz_backend.php?id=' + 1)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
