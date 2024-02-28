@@ -1,7 +1,7 @@
 @media screen and (max-width: 768px) and (orientation: portrait) {
 
     .bande {
-        background-color: #264075;
+        background-color: #2855b1;
         width: 100%;
         height: 60px;
         position: fixed;
@@ -43,7 +43,7 @@
 
   @media screen and (min-width: 1024px) and (orientation: landscape) {
     .bande {
-        background-color: #264075;
+        background-color: #2855b1;
         width: 100%;
         height: 80px;
         position: fixed;
