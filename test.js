@@ -34,7 +34,8 @@ $(document).ready(function () {
             note++;
         }
     }
-
+    var urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
     function getQuestion() {
         fetch('http://localhost/backend/quizz_backend.php?id=' + questionIndex)
             .then(response => response.json())
@@ -50,7 +51,7 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'https://thwg5546.github.io/Quizz/partieAskQuestions/testquizz.html?id=' + questionId;
+        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?id=' + questionId;
         window.location.href = url;
     }
 });
