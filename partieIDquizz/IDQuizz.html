@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyQuizz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png">
+</head>
+
+<body>
+    <div class="bande">
+        <img class="logo" src="img/logo.png" alt="logo">
+        <h1 class="titre">EasyQuizz!</h1>
+    </div>
+
+    <div class="container">
+        <div class="titre-container">
+            <h1 class="titre">Faites votre propre Quizz ! </h1>
+        </div>
+
+        <form id="quizz-form" action="/submit_id.php" method="POST">
+            <div class="sous-titre-container phrase-container">
+                <label for="quiz-id">Entrez l'ID de votre Quizz :</label><br>
+                <input type="number" id="quiz-id" name="quiz-id" placeholder="ID de votre quizz" required><br>
+            </div>
+
+            <button type="submit" id="valider-quizz-btn">Valider</button>
+        </form>
+
+        <div id="quizz-output" class="sous-titre-container" style="display: none;">
+            
+        </div>
+    </div>
+</body>
+
+</html>
