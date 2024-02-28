@@ -85,7 +85,7 @@ button[type="submit"]:hover {
 .sous-titre-container {
     padding: 10px 20px;
     border-radius: 20px;
-    background-color: rgba(31, 65, 242, 0.85);
+    background-color: #1f65f2;
     margin-bottom: 20px;
 }
 
