@@ -49,7 +49,7 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?id=' + questionId;
+        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + 1 + '?id=' + questionId;
         window.location.href = url;
     }
 });
