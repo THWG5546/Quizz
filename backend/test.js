@@ -5,7 +5,7 @@ $(document).ready(function () {
     const questionElement = document.getElementById('question');
     const answersElement = document.getElementById('answers');
     const noteElement = document.getElementById('note');
-
+    getQuestion()
     function showQuestion(questionData) {
         idquestionElement.innerHTML = questionData.id;
         questionElement.textContent = questionData.question;
@@ -20,6 +20,11 @@ $(document).ready(function () {
             answersElement.appendChild(button);
         }
     }
+    document.getElementById('valider_reponse').addEventListener('click', function () {
+        console.log("Le bouton de validation a été cliqué !");
+        nextQuestion();
+    });
+
     function nextQuestion() {
         questionIndex++;
         localStorage.setItem('questionIndex', questionIndex);
@@ -31,13 +36,8 @@ $(document).ready(function () {
         }
     }
 
-    document.getElementById('valider_reponse').addEventListener('click', function () {
-        console.log("Le bouton de validation a été cliqué !");
-        nextQuestion();
-    });
-
-    function fetchNextQuestion() {
-        fetch('http://localhost/backend/quizz_backend.php?id=' + 1)
+    function getQuestion() {
+        fetch('http://localhost/backend/quizz_backend.php?id=' + questionIndex)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
@@ -48,8 +48,13 @@ $(document).ready(function () {
                 }
             })
             .catch(error => console.error('Erreur lors de la récupération de la question:', error));
+    }
+    function fetchNextQuestion() {
         let questionId = questionIndex;
         let url = 'http://127.0.0.1:3000/partieAskQuestions/testquizz.html?id=' + questionId;
         window.location.href = url;
     }
 });
+
+
+
