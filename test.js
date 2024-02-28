@@ -1,6 +1,6 @@
 $(document).ready(function () {
     questionIndex = localStorage.getItem('questionIndex') || 1;
-    idquizz = localStorage.getItem('idquizz'); torage.getItem('idquizz');
+    idquizz = localStorage.getItem('idquizz');
     let note = 0;
     const questionElement = document.getElementById('question');
     const answersElement = document.getElementById('answers');
