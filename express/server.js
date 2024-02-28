@@ -7,7 +7,7 @@ const port = 3011;
 
 const db = mysql.createConnection({
     host: 'localhost',
-    port: '33XX',
+    port: '3306',
     user: 'root',
     password: '',
     database: 'quizz_reponse'
@@ -22,12 +22,7 @@ app.get('/reponses', (req, res) => {
 });
 
 
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connecté à la base de données MySQL');
-});
+
 
 
 app.listen(port, () => {
