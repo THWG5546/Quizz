@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyQuizz - Obtenez Votre Note</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="fichiers/css/Note.css">
+    <link rel="icon" href="fichiers/image/logo.png">
+    <script src="fichiers/scripts/clickeffect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css">
 </head>
 <body>
     <div class="bande">
-        <img class="logo" src="logo.png" alt="logo">
+        <img class="logo" src="fichiers/image/logo.png" alt="logo">
         <h1 class="titre">EasyQuizz!</h1>
     </div>
 
@@ -25,7 +27,7 @@
                 <input type="text" id="quizz-id" name="quizz-id" placeholder="Votre ID ici" required><br>
             </div>
 
-            <button type="submit" id="valider-nom-btn">Valider</button>
+            <button type="submit" id="valider-nom-btn" class="bttn-pill bttn-md bttn-primary">Valider</button>
         </form>
 
         <div id="note-output" class="sous-titre-container" style="display: none;">
