@@ -15,17 +15,17 @@
 
     <div class="container">
         <div class="titre-container">
-            <h1 class="titre">Entrez votre ID Pour votre note </h1>
+            <h1 class="titre">Entrez votre ID pour obtenir votre note</h1>
         </div>
 
-        <form id="quizz-id-form">
+       
+        <form id="quizz-id-form" action="submit.php" method="POST">
             <div class="sous-titre-container phrase-container">
-                <label for="quizz-id">ID Pour la note  :</label><br>
+                <label for="quizz-id">ID pour la note :</label><br>
                 <input type="text" id="quizz-id" name="quizz-id" placeholder="Votre ID ici" required><br>
             </div>
 
-            <button type="submit" id="valider-nom-btn" style="padding: 10px 20px; background-color: #1f65f2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 15px; margin-top: 10px;">Valider</button>
-
+            <button type="submit" id="valider-nom-btn">Valider</button>
         </form>
 
         <div id="note-output" class="sous-titre-container" style="display: none;">
@@ -34,12 +34,26 @@
         </div>
     </div>
 
-    <script>
-        function obtenirNote() {
-            const note = Math.floor(Math.random() * 21);  //test ça mets une note random 
-            document.getElementById('note-display').textContent = note;
-            document.getElementById('note-output').style.display = 'block';
-        }
-    </script>
+    <script> //tchat gpt """" traiter la réponse
+        document.getElementById('quizz-id-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            var quizzId = document.getElementById('quizz-id').value;
+        
+            fetch('submit.php', {
+                method: 'POST',
+                body: new URLSearchParams('quizz-id=' + quizzId),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('note-display').textContent = data;
+                document.getElementById('note-output').style.display = 'block';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+        </script>
+        
 </body>
 </html>
