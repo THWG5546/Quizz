@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'connect_db.php'; 
+    include 'backend/db_connect.php.php'; 
 
     // Traitement pour les entrées de quizz
     if (isset($_POST['question'])) {
@@ -22,7 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sssssi", $question, $reponses[0], $reponses[1], $reponses[2], $reponses[3], $bonneReponseIndex);
 
         if ($stmt->execute()) {
-            echo "Nouvelle question de quizz ajoutée avec succès";
+            header('Location: PageId.html');
+            exit;
         } else {
             echo "Erreur lors de l'ajout de la question de quizz : " . $stmt->error;
         }

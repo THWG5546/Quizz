@@ -7,7 +7,7 @@ const port = 3011;
 
 const db = mysql.createConnection({
     host: 'localhost',
-    port: '33XX',
+    port: '3306',
     user: 'root',
     password: '',
     database: 'quizz_reponse'
@@ -63,5 +63,4 @@ app.listen(port, () => {
         // Appel de la fonction pour récupérer les réponses au chargement de la page
         fetchReponses();
     </script>
-
 */
