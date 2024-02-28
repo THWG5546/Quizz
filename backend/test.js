@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    localStorage.setItem('questionIndex', 1);
     questionIndex = localStorage.getItem('questionIndex') || 1;
     let note = 0;
     const idquestionElement = document.getElementById('idQuestion');
