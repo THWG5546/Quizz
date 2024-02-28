@@ -1,16 +1,15 @@
 <?php
-include 'backend/db_connect.php';
+include 'db_connect.php';
 
-// Utilisation de la méthode GET pour récupérer l'ID du quizz
-if (isset($_GET['quizz-id'])) {
-    // Vérification de la connexion à la base de données
-    if ($conn->connect_error) {
-        die("La connexion a échoué : " . $conn->connect_error);
-    }
+if ($conn->connect_error) {
+    die("La connexion a échoué : " . $conn->connect_error);
+}
 
-    $quizzId = htmlspecialchars($_GET['quizz-id']);
+if (isset($_POST['quizz-id'])) {
+    $quizzId = $_POST['quizz-id'];
 
-    $stmt = $conn->prepare("SELECT Note FROM NoteQuizz WHERE ID = ?");
+    $stmt = $conn->prepare("SELECT Note FROM NoteQuizz WHERE ID = ?
+    ");
     $stmt->bind_param("i", $quizzId);
 
     if ($stmt->execute()) {
@@ -27,7 +26,10 @@ if (isset($_GET['quizz-id'])) {
     }
 
     $stmt->close();
-    $conn->close();
 } else {
     echo "Aucun ID de quizz fourni";
+
+    
 }
+
+$conn->close();
