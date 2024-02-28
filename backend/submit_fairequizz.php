@@ -5,8 +5,8 @@ header("Access-Control-Allow-Headers: Content-Type");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'db_connect.php';
     // Collecte des data du form
-    $nom = htmlspecialchars($_REQUEST['nom']);
-    $prenom = htmlspecialchars($_REQUEST['prenom']);
+    $nom = htmlspecialchars($_REQUEST['quiz-name']);
+    $prenom = htmlspecialchars($_REQUEST['quiz-firstname']);
 
     if (empty($nom) || empty($prenom)) {
         echo "Tous les éléments sont requis !";
