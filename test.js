@@ -1,7 +1,7 @@
 $(document).ready(function () {
     questionIndex = localStorage.getItem('questionIndex') || 1;
+    idquizz = localStorage.getItem('idquizz'); torage.getItem('idquizz');
     let note = 0;
-    const idquestionElement = document.getElementById('idQuestion');
     const questionElement = document.getElementById('question');
     const answersElement = document.getElementById('answers');
     const noteElement = document.getElementById('note');
@@ -35,7 +35,7 @@ $(document).ready(function () {
         }
     }
     function getQuestion() {
-        fetch('http://localhost/backend/quizz_backend.php?id=' + questionIndex)
+        fetch('http://localhost/backend/quizz_backend.php?idquizz=' + idquizz + '?id=' + questionIndex)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
@@ -49,7 +49,7 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + 1 + '?id=' + questionId;
+        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '?id=' + questionId;
         window.location.href = url;
     }
 });
