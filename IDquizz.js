@@ -7,20 +7,4 @@ $(document).ready(function () {
         let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '?id=' + 1;
         window.location.href = url;
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
