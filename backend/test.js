@@ -52,7 +52,7 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'http://127.0.0.1:3000/partieAskQuestions/testquizz.html?id=' + questionId;
+        let url = 'https://thwg5546.github.io/Quizz/partieAskQuestions/testquizz.html?id=' + questionId;
         window.location.href = url;
     }
 });
