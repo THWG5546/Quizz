@@ -39,14 +39,15 @@ $(document).ready(function () {
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
+                    console.log("Question trouvée");
                     showQuestion(questionData);
                 } else {
                     console.log("Question non trouvée");
                 }
             })
             .catch(error => console.error('Erreur lors de la récupération de la question:', error));
-        let questionId = questionIndex;
-        let url = 'http://127.0.0.1:3000/partieAskQuestions/testquizz.html?id=' + questionId;
-        window.location.href = url;
+        //let questionId = questionIndex;
+        //let url = 'http://127.0.0.1:3000/partieAskQuestions/testquizz.html?id=' + questionId;
+        //window.location.href = url;
     }
 });
