@@ -16,6 +16,7 @@ if (empty($nom) || empty($prenom) || empty($idquizz)) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi", $nom, $prenom, $idquizz);
     $stmt->execute();
+    echo "$idquizz";
     /*if ($stmt->execute()) {
         header("Location:https://thwg5546.github.io/Quizz/testquizz.html?idquizz=" . $idquizz . "?id=" . $idquest);
     } else {
