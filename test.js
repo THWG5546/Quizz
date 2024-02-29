@@ -1,7 +1,8 @@
 $(document).ready(function () {
     questionIndex = localStorage.getItem('questionIndex') || 1;
     idquizz = localStorage.getItem('quizzindex');
-    let note = 0;
+    note = localStorage.getItem('note') || 1;
+    //let note = 0;
     const questionElement = document.getElementById('question');
     const answersElement = document.getElementById('answers');
     const noteElement = document.getElementById('note');
@@ -32,6 +33,8 @@ $(document).ready(function () {
     function validateAnswer(isCorrect) {
         if (isCorrect) {
             note++;
+            localStorage.setItem('note', note);
+            console.log(note);
         }
     }
     function getQuestion() {
@@ -49,8 +52,8 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
-        window.location.href = url;
+        //let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
+        //window.location.href = url;
     }
 });
 
