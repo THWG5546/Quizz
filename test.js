@@ -5,10 +5,10 @@ $(document).ready(function () {
     //let note = 0;
     const questionElement = document.getElementById('question');
     //const answersElement = document.getElementById('answers');
-    const reponse_1 = document.getElementById('reponse_1');
-    const reponse_2 = document.getElementById('reponse_2');
-    const reponse_3 = document.getElementById('reponse_3');
-    const reponse_4 = document.getElementById('reponse_4');
+    const reponse_1 = document.getElementById('reponse1');
+    const reponse_2 = document.getElementById('reponse2');
+    const reponse_3 = document.getElementById('reponse3');
+    const reponse_4 = document.getElementById('reponse4');
     //const noteElement = document.getElementById('note');
     getQuestion()
     function showQuestion(questionData) {
@@ -40,7 +40,6 @@ $(document).ready(function () {
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
-                    console.log("Question trouvée");
                     if (reponse1.checked) {
                         console.log("Réponse 1 sélectionnée !");
                         validateAnswer(questionData.reponse1 === questionData.bonnereponse)
@@ -82,8 +81,6 @@ $(document).ready(function () {
                 if (questionData) {
                     console.log("Question trouvée");
                     showQuestion(questionData);
-                    console.log(questionData.reponse1);
-                    console.log(questionData.bonnereponse);
                 } else {
                     console.log("Question non trouvée");
                 }
@@ -92,8 +89,8 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        //let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
-        //window.location.href = url;
+        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
+        window.location.href = url;
     }
 });
 
