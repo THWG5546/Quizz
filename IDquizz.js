@@ -4,9 +4,7 @@ $(document).ready(function () {
         var idquizzValue = document.getElementById('quiz-id').value;
         var nomValue = document.getElementById('quiz-name').value;
         var prenomValue = document.getElementById('quiz-firstname').value;
-        console.log("La valeur de quiz-id est : " + idquizzValue);
         localStorage.setItem('quizzindex', idquizzValue);
-        console.log(localStorage.getItem('quizzindex'));
         localStorage.setItem('questionIndex', 1);
         fetch('http://localhost/backend/submit_fairequizz.php?quiz-id=' + idquizzValue + '&quiz-name=' + nomValue + '&quiz-firstname=' + prenomValue)
             .then(response => {
@@ -23,7 +21,7 @@ $(document).ready(function () {
             .catch(error => {
                 console.error('Erreur:', error);
             });
-        //let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + "?id=" + 1;
-        //window.location.href = url;
+        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizzValue + "?id=1";
+        window.location.href = url;
     });
 });
