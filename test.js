@@ -89,7 +89,7 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        fetch('http://localhost/backend/quizz_checknbquest.php')
+        fetch('http://localhost/backend/quizz_checknbquest.php?idquizz=' + idquizz + '&id=' + questionIndex)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
