@@ -62,6 +62,7 @@ input[type="text"] {
 
 button[type="submit"],
 #ajouter-reponse-btn,
+#autre-question-btn,
 #valider-quizz-btn {
     padding: 10px 20px;
     background-color: #1f65f2;
@@ -73,8 +74,10 @@ button[type="submit"],
     margin-top: 10px;
 }
 
+
 button[type="submit"]:hover,
 #ajouter-reponse-btn:hover,
+#autre-question-btn:hover,
 #valider-quizz-btn:hover {
     background-color: #112e68;
 }
