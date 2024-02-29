@@ -1,15 +1,23 @@
 $(document).ready(function () {
     questionIndex = localStorage.getItem('questionIndex') || 1;
     idquizz = localStorage.getItem('quizzindex');
-    note = localStorage.getItem('note') || 1;
+    note = localStorage.getItem('note') || 0;
     //let note = 0;
     const questionElement = document.getElementById('question');
     const answersElement = document.getElementById('answers');
-    const noteElement = document.getElementById('note');
+    const reponse1 = document.getElementById('reponse1');
+    const reponse2 = document.getElementById('reponse2');
+    const reponse3 = document.getElementById('reponse3');
+    const reponse4 = document.getElementById('reponse4');
+    //const noteElement = document.getElementById('note');
     getQuestion()
     function showQuestion(questionData) {
         questionElement.textContent = questionData.question;
-        answersElement.innerHTML = '';
+        reponse1.textContent = questionData.reponse1;
+        reponse2.textContent = questionData.reponse2;
+        reponse3.textContent = questionData.reponse3;
+        reponse4.textContent = questionData.reponse4;
+        /*answersElement.innerHTML = '';
         for (let i = 1; i <= 4; i++) {
             const option = questionData['reponse' + i];
             const button = document.createElement('button');
@@ -18,7 +26,7 @@ $(document).ready(function () {
                 validateAnswer(option === questionData.bonnereponse);
             });
             answersElement.appendChild(button);
-        }
+        }*/
     }
     document.getElementById('valider_reponse').addEventListener('click', function () {
         console.log("Le bouton de validation a été cliqué !");
