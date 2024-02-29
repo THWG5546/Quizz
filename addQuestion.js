@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    questionIndex = localStorage.getItem('questionIndex') || 1;
+    createQuestionIndex = localStorage.getItem('createQuestionIndex') || 1;
     let note = 0;
     const idquestionElement = document.getElementById('idQuestion');
     const questionElement = document.getElementById('question');
@@ -25,8 +25,8 @@ $(document).ready(function () {
     });
 
     function nextQuestion() {
-        questionIndex++;
-        localStorage.setItem('questionIndex', questionIndex);
+        createQuestionIndex++;
+        localStorage.setItem('createQuestionIndex', createQuestionIndex);
         fetchNextQuestion();
     }
     function validateAnswer(isCorrect) {
@@ -35,7 +35,7 @@ $(document).ready(function () {
         }
     }
     function getQuestion() {
-        fetch('http://localhost/backend/quizz_backend.php?id=' + questionIndex)
+        fetch('http://localhost/backend/quizz_backend.php?id=' + createQuestionIndex)
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
@@ -48,7 +48,7 @@ $(document).ready(function () {
             .catch(error => console.error('Erreur lors de la récupération de la question:', error));
     }
     function fetchNextQuestion() {
-        let questionId = questionIndex;
+        let questionId = createQuestionIndex;
         let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + 1 + '?id=' + questionId;
         window.location.href = url;
     }
