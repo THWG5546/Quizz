@@ -10,14 +10,14 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['quizz-id'])) {
     $prenom = $_POST['prenom'];
     $quizzId = $_POST['quizz-id'];
 
-    $stmt = $conn->prepare("SELECT Note FROM NoteQuizz WHERE nom = ? AND prenom = ? AND idquizz = ?");
+    $stmt = $conn->prepare("SELECT note FROM users WHERE nom = ? AND prenom = ? AND idquizz = ?");
     $stmt->bind_param("ssi", $nom, $prenom, $quizzId);
 
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            echo $row["Note"];
+            echo $row["note"];
         } else {
             echo "Aucune note trouvée pour ce nom, prénom et ID de quizz";
         }
@@ -31,3 +31,4 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['quizz-id'])) {
 }
 
 $conn->close();
+?>
