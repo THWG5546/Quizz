@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ss", $nom, $prenom);
 
         if ($stmt->execute()) {
-            header("Location:https://thwg5546.github.io/Quizz/testquizz.html?idquizz=" . $idquizz . "?id=" . $idquest);
+            //header("Location:https://thwg5546.github.io/Quizz/testquizz.html?idquizz=" . $idquizz . "?id=" . $idquest);
         } else {
             echo "Error: " . $stmt->error;
         }
