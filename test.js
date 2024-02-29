@@ -5,10 +5,10 @@ $(document).ready(function () {
     //let note = 0;
     const questionElement = document.getElementById('question');
     //const answersElement = document.getElementById('answers');
-    const reponse_1 = document.getElementById('reponse1');
-    const reponse_2 = document.getElementById('reponse2');
-    const reponse_3 = document.getElementById('reponse3');
-    const reponse_4 = document.getElementById('reponse4');
+    const reponse_1 = document.getElementById('reponse_1');
+    const reponse_2 = document.getElementById('reponse_2');
+    const reponse_3 = document.getElementById('reponse_3');
+    const reponse_4 = document.getElementById('reponse_4');
     //const noteElement = document.getElementById('note');
     getQuestion()
     function showQuestion(questionData) {

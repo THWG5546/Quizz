@@ -4,7 +4,7 @@
 $pdo = new PDO('mysql:host=localhost;dbname=quizz_reponse', 'root', '');
 
 // Préparer la requête SQL
-$stmt = $pdo->prepare('SELECT MAX(idquizz) AS last_idquizz FROM reponses');
+$stmt = $pdo->prepare('SELECT idquizz AS last_idquizz FROM reponses ORDER BY id DESC');
 
 // Exécuter la requête
 $stmt->execute();
