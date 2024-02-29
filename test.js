@@ -31,7 +31,7 @@ $(document).ready(function () {
     document.getElementById('valider_reponse').addEventListener('click', function () {
         console.log("Le bouton de validation a été cliqué !");
         nextQuestion();
-        console.log(reponse1.checked);
+        console.log(reponse1.value);
     });
 
     function nextQuestion() {
