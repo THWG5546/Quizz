@@ -36,21 +36,31 @@ $(document).ready(function () {
     });
 
     function checkSelectedAnswer() {
-        if (reponse1.checked) {
-            console.log("Réponse 1 sélectionnée !");
-            validateAnswer(questionData.reponse1 === questionData.bonnereponse)
-        } else if (reponse2.checked) {
-            console.log("Réponse 2 sélectionnée !");
-            validateAnswer(questionData.reponse2 === questionData.bonnereponse)
-        } else if (reponse3.checked) {
-            console.log("Réponse 3 sélectionnée !");
-            validateAnswer(questionData.reponse3 === questionData.bonnereponse)
-        } else if (reponse4.checked) {
-            console.log("Réponse 4 sélectionnée !");
-            validateAnswer(questionData.reponse4 === questionData.bonnereponse)
-        } else {
-            console.log("Aucune réponse sélectionnée !");
-        }
+        fetch('http://localhost/backend/quizz_backend.php?idquizz=' + idquizz + '&id=' + questionIndex)
+            .then(response => response.json())
+            .then(questionData => {
+                if (questionData) {
+                    console.log("Question trouvée");
+                    if (reponse1.checked) {
+                        console.log("Réponse 1 sélectionnée !");
+                        validateAnswer(questionData.reponse1 === questionData.bonnereponse)
+                    } else if (reponse2.checked) {
+                        console.log("Réponse 2 sélectionnée !");
+                        validateAnswer(questionData.reponse2 === questionData.bonnereponse)
+                    } else if (reponse3.checked) {
+                        console.log("Réponse 3 sélectionnée !");
+                        validateAnswer(questionData.reponse3 === questionData.bonnereponse)
+                    } else if (reponse4.checked) {
+                        console.log("Réponse 4 sélectionnée !");
+                        validateAnswer(questionData.reponse4 === questionData.bonnereponse)
+                    } else {
+                        console.log("Aucune réponse sélectionnée !");
+                    }
+                } else {
+                    console.log("Question non trouvée");
+                }
+            })
+            .catch(error => console.error('Erreur lors de la récupération de la question:', error));
     }
 
     function nextQuestion() {
