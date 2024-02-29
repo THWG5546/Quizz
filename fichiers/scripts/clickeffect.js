@@ -5,4 +5,4 @@ function clickEffect(e) {
     document.body.appendChild(d);
     d.addEventListener('animationend', function () { d.parentElement.removeChild(d); }.bind(this));
 }
-//document.addEventListener('click',clickEffect);
+document.addEventListener('click', clickEffect);
