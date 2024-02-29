@@ -22,7 +22,7 @@
             <h1 class="titre">Créez votre propre Quizz ! </h1>
         </div>
 
-        <form id="quizz-form" action="submit_id.php" method="post">
+        <form id="quizz-form" action="backend/submit_quizz_reponse.php" method="post">
             <div class="sous-titre-container phrase-container">
                 <label for="question">Entrez Votre Question <span id="id_question"></span> :</label><br>
                 <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
@@ -34,7 +34,7 @@
             </div>
 
             <button type="button" id="ajouter-reponse-btn" onclick="ajouterReponse()" class="bttn-pill bttn-md bttn-primary">Ajouter une réponse</button>
-            <button type="" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary">Autre Question</button>
+            <button type="submit" id="autre-question-btn" class="bttn-pill bttn-md bttn-primary">Autre Question</button>
             <button type="submit" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary">Valider</button>
         </form>
 
@@ -76,6 +76,73 @@
                 alert('Vous ne pouvez ajouter plus de 4 réponses.');
             }
         }
+        
+
+        function generateShortId() {
+            var id = '';
+            for (var i = 0; i < 4; i++) {
+                id += Math.floor(Math.random() * 10); 
+            }
+
+            return id;
+}
+
+        
+        var id = localStorage.getItem('idquizz');
+            if (!id) {
+                id = generateShortId();
+                localStorage.setItem('idquizz', id);
+            }
+            
+        var id_question = localStorage.getItem('id_question');
+            if(!id_question) {
+                id_question = 1;
+                localStorage.setItem('id_question', id_question)
+            }
+            else {
+                id_question++;
+                localStorage.setItem('id_question', id_question)
+            }
+            document.getElementById('idquizz').value = id;
+            document.getElementById('id_question').value = id_question;
+
+
+        var currentUrl = window.location.href;
+
+        var newUrl = currentUrl + '?idquizz=' + id + '?id_question=' + id_question;
+
+
+        window.history.replaceState({}, '', newUrl);
+
+        document.getElementById('valider-quizz-btn').addEventListener('click', function() {
+            document.getElementById('action').value = 'valider';
+        });
+
+        document.getElementById('autre-question-btn').addEventListener('click', function() {
+            document.getElementById('action').value = 'autre_question';
+        });
+
+        function ajouterQuestion() {
+        let formData = new FormData(document.getElementById('quizz-form'));
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "backend/submit_quizz.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Traitement réussi
+                    resetForm();
+                } else {
+                    // Traitement en cas d'erreur
+                    console.error('Une erreur est survenue lors de la communication avec le serveur.');
+                }
+            }
+        };
+        xhr.send(formData);
+        }
+
+
+        
+
     </script>
 </body>
 
