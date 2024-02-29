@@ -6,6 +6,7 @@ $(document).ready(function () {
         var prenomValue = document.getElementById('quiz-firstname').value;
         localStorage.setItem('quizzindex', idquizzValue);
         localStorage.setItem('questionIndex', 1);
+        localStorage.setItem('note', 0);
         fetch('http://localhost/backend/submit_fairequizz.php?quiz-id=' + idquizzValue + '&quiz-name=' + nomValue + '&quiz-firstname=' + prenomValue)
             .then(response => {
                 if (!response.ok) {

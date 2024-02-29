@@ -1,11 +1,8 @@
 <?php
-// Connexion à la base de données pour les questions
-$bdd_questions = new PDO('mysql:host=localhost;dbname=quizz_reponse', 'root', '');
+$bdd_questions = new PDO('mysql:host=localhost:3306;dbname=quizz', 'root', '');
 
-// Connexion à la base de données pour les réponses
-$bdd_reponses = new PDO('mysql:host=localhost;dbname=quizz', 'root', '');
+$bdd_reponses = new PDO('mysql:host=localhost:3306;dbname=quizz_reponse', 'root', '');
 
-// Récupération des données du formulaire
 $question = $_POST['question'];
 $reponses = array();
 for ($i = 1; $i <= 4; $i++) {
@@ -13,22 +10,12 @@ for ($i = 1; $i <= 4; $i++) {
         $reponses[] = $_POST['reponse' . $i];
     }
 }
-$bonneReponse = $_POST['bonneReponse'];
+$bonneReponse = $reponses[$_POST['bonneReponse'] - 1];
 
-// Insertion de la question dans la base de données des questions
 $insert_question = $bdd_questions->prepare("INSERT INTO questions (question) VALUES (?)");
 $insert_question->execute([$question]);
 
-// Récupération de l'identifiant de la question insérée
 $id_question = $bdd_questions->lastInsertId();
-
-// Insertion des réponses dans la base de données des réponses
-foreach ($reponses as $index => $reponse) {
-    $is_correct = ($index + 1 == $bonneReponse) ? 1 : 0;
-    $insert_reponse = $bdd_reponses->prepare("INSERT INTO reponses (id_question, reponse, is_correct) VALUES (?, ?, ?)");
-    $insert_reponse->execute([$id_question, $reponse, $is_correct]);
-}
-
-// Réponse de succès
-echo "Question et réponses insérées avec succès !";
+$insert_reponses = $bdd_reponses->prepare("INSERT INTO reponses (id_question, reponse1, reponse2, reponse3, reponse4, bonnereponse) VALUES (?, ?, ?, ?, ?, ?)");
+$insert_reponses->execute([$id_question, $reponses[0], $reponses[1], $reponses[2], $reponses[3], $bonneReponse]);
 ?>
