@@ -17,8 +17,8 @@ $(document).ready(function () {
             .then(data => {
                 // Traitez les données de réponse si nécessaire
                 console.log(data);
-                let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizzValue + "&id=1";
-                window.location.href = url;
+                //let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizzValue + "&id=1";
+                //window.location.href = url;
             })
             .catch(error => {
                 console.error('Erreur:', error);
