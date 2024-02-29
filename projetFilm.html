@@ -22,17 +22,19 @@
             <h1 class="titre">Créez votre propre Quizz ! </h1>
         </div>
 
-        <form id="quizz-form" method="post">
+        <form id="quizz-form" action="backend/submit_quizz_reponse.php" method="post">
             <div class="sous-titre-container phrase-container">
-                <label for="question">Entrez Votre Question :</label><br>
+                <label for="question">Entrez Votre Question <span id="id_question"></span> :</label><br>
                 <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
             </div>
-
+                <input type="hidden" id="id_question" name="id_question" value="id_question">
+                <input type="hidden" id="idquizz" name="idquizz" value="">
+                <input type="hidden" id="action" name="action" value="">
             <div id="reponses-container" class="reponses-container">
             </div>
 
             <button type="button" id="ajouter-reponse-btn" onclick="ajouterReponse()" class="bttn-pill bttn-md bttn-primary">Ajouter une réponse</button>
-            <button type="" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary" onclick="ajouterQuestion()">Ajouter Question</button>
+            <button type="submit" id="autre-question-btn" class="bttn-pill bttn-md bttn-primary">Autre Question</button>
             <button type="submit" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary">Valider</button>
         </form>
 
@@ -63,7 +65,8 @@
                 // Créer une case à cocher pour chaque nouvelle réponse ajoutée
                 let nouvelleCheckBox = document.createElement('input');
                 nouvelleCheckBox.type = 'radio';
-                nouvelleCheckBox.name = 'bonneReponse';
+                nouvelleCheckBox.name = 'bonnereponse';
+                nouvelleCheckBox.id = 'bonnereponse';
                 nouvelleCheckBox.value = nombreReponses;
                 reponsesContainer.appendChild(nouvelleCheckBox);
 
@@ -73,25 +76,73 @@
                 alert('Vous ne pouvez ajouter plus de 4 réponses.');
             }
         }
+        
 
+        function generateShortId() {
+            var id = '';
+            for (var i = 0; i < 4; i++) {
+                id += Math.floor(Math.random() * 10); 
+            }
+
+            return id;
+}
+
+        
+        var id = localStorage.getItem('idquizz');
+            if (!id) {
+                id = generateShortId();
+                localStorage.setItem('idquizz', id);
+            }
+            
+        var id_question = localStorage.getItem('id_question');
+            if(!id_question) {
+                id_question = 1;
+                localStorage.setItem('id_question', id_question)
+            }
+            else {
+                id_question++;
+                localStorage.setItem('id_question', id_question)
+            }
+            document.getElementById('idquizz').value = id;
+            document.getElementById('id_question').value = id_question;
+
+
+        var currentUrl = window.location.href;
+
+        var newUrl = currentUrl + '?idquizz=' + id + '?id_question=' + id_question;
+
+
+        window.history.replaceState({}, '', newUrl);
+
+        document.getElementById('valider-quizz-btn').addEventListener('click', function() {
+            document.getElementById('action').value = 'valider';
+        });
+
+        document.getElementById('autre-question-btn').addEventListener('click', function() {
+            document.getElementById('action').value = 'autre_question';
+        });
 
         function ajouterQuestion() {
-    let formData = new FormData(document.getElementById('quizz-form'));
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "backend/submit_quizz.php", true); // Remplacez "http://example.com/backend/submit_quizz.php" par l'URL réelle de votre serveur back-end
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // Traitement réussi
-                resetForm();
-            } else {
-                // Traitement en cas d'erreur
-                console.error('Une erreur est survenue lors de la communication avec le serveur.');
+        let formData = new FormData(document.getElementById('quizz-form'));
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "backend/submit_quizz.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Traitement réussi
+                    resetForm();
+                } else {
+                    // Traitement en cas d'erreur
+                    console.error('Une erreur est survenue lors de la communication avec le serveur.');
+                }
             }
+        };
+        xhr.send(formData);
         }
-    };
-    xhr.send(formData);
-        }
+
+
+        
+
     </script>
 </body>
 
