@@ -89,8 +89,8 @@ $(document).ready(function () {
     }
     function fetchNextQuestion() {
         let questionId = questionIndex;
-        let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
-        window.location.href = url;
+        //let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
+        //window.location.href = url;
     }
 });
 
