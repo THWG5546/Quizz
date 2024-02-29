@@ -9,9 +9,18 @@ const db = mysql.createConnection({
     host: 'localhost',
     port: '3306',
     user: 'root',
-    password: '',
+    password: 'password',
     database: 'quizz_reponse'
 });
+
+db.connect((err) => {
+    if(err){
+        console.log("Erreur de connexion:  " +err.stack)
+        return;
+    }
+    console.log('Connexion réussie')
+});
+
 
 app.get('/reponses', (req, res) => {
     const sql = 'SELECT * FROM reponses';
