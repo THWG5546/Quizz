@@ -8,7 +8,7 @@ $(document).ready(function () {
         localStorage.setItem('quizzindex', idquizzValue);
         console.log(localStorage.getItem('quizzindex'));
         localStorage.setItem('questionIndex', 1);
-        fetch('http://localhost/backend/submit_fairequizz.php?idquizz=' + idquizzValue + '&id=1')
+        fetch('http://localhost/backend/submit_fairequizz.php?quiz-id=' + idquizzValue + '&quiz-name=' + nomValue + '&quiz-firstname=' + prenomValue)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erreur lors de la requête fetch');
