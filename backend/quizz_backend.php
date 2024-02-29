@@ -21,7 +21,7 @@ if (((isset($_GET['id'])) && !empty($_GET['id'])) && ((isset($_GET['idquizz'])) 
     }
     $stmt->close();
 } else {
-    echo "ID non spécifié";
+    echo "ID non spécifié/n";
     echo ((isset($_GET['id'])) && !empty($_GET['id']));
     echo ((isset($_GET['idquizz'])) && !empty($_GET['idquizz']));
 }
