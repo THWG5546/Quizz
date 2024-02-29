@@ -30,9 +30,28 @@ $(document).ready(function () {
     }
     document.getElementById('valider_reponse').addEventListener('click', function () {
         console.log("Le bouton de validation a été cliqué !");
+        checkSelectedAnswer();
+        console.log(note);
         nextQuestion();
-        console.log(reponse1.value);
     });
+
+    function checkSelectedAnswer() {
+        if (reponse1.checked) {
+            console.log("Réponse 1 sélectionnée !");
+            validateAnswer(reponse1 === questionData.bonnereponse)
+        } else if (reponse2.checked) {
+            console.log("Réponse 2 sélectionnée !");
+            validateAnswer(reponse2 === questionData.bonnereponse)
+        } else if (reponse3.checked) {
+            console.log("Réponse 3 sélectionnée !");
+            validateAnswer(reponse3 === questionData.bonnereponse)
+        } else if (reponse4.checked) {
+            console.log("Réponse 4 sélectionnée !");
+            validateAnswer(reponse4 === questionData.bonnereponse)
+        } else {
+            console.log("Aucune réponse sélectionnée !");
+        }
+    }
 
     function nextQuestion() {
         questionIndex++;
