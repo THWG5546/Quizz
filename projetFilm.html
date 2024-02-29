@@ -32,7 +32,7 @@
             </div>
 
             <button type="button" id="ajouter-reponse-btn" onclick="ajouterReponse()" class="bttn-pill bttn-md bttn-primary">Ajouter une réponse</button>
-            <button type="" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary">Autre Question</button>
+            <button type="" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary" onclick="ajouterQuestion()">Autre Question</button>
             <button type="submit" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary">Valider</button>
         </form>
 
@@ -72,6 +72,17 @@
             } else {
                 alert('Vous ne pouvez ajouter plus de 4 réponses.');
             }
+        }
+
+
+        function ajouterQuestion() {
+            let formData = new FormData(document.getElementById('quizz-form'));
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "bakcend/submit_quizz_reponse", true);
+            xhr.send(formData);
+
+            // Réinitialiser le formulaire
+            resetForm();
         }
     </script>
 </body>
