@@ -14,7 +14,7 @@ if (empty($nom) || empty($prenom) || empty($idquizz)) {
 } else {
     $sql = "INSERT INTO users (nom, prenom, idquizz) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $nom, $prenom, $idquizz);
+    $stmt->bind_param("ssi", $nom, $prenom, $idquizz);
     $stmt->execute();
     /*if ($stmt->execute()) {
         header("Location:https://thwg5546.github.io/Quizz/testquizz.html?idquizz=" . $idquizz . "?id=" . $idquest);
