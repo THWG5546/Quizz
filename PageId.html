@@ -22,32 +22,30 @@
             <h1 class="titre">Votre Quizz est prêt !</h1>
         </div>
 
-        <form id="name-form" action="submit_id.php" method="post">
+        
             <div class="sous-titre-container phrase-container">
-                <label for="name">Entrez votre nom :</label><br>
-                <input type="text" id="name" name="name" placeholder="Votre nom ici" required><br>
+                <Div>Voici l'identifiant du quizz: <br> <div id="last-idquizz"></div> <br> Veuillez bien le noter avant de poursuivre</Div><br>
+                
             </div>
 
-            <button type="submit" id="valider-nom-btn">Valider</button>
-        </form>
+    <a href="IDQuizz.html "><button id="valider" class="bttn-pill bttn-md bttn-primary">Valider</button></a> 
+        
 
-        <div id="id-output" class="sous-titre-container" style="display: none;">
-            <p>Votre nom est :</p>
-            <p id="name-display"></p>
-
-            <p>Votre identifiant pour le Quizz est :</p>
-            <p id="id-display"></p>
-        </div>
     </div>
 
     <script>
-        document.getElementById('name-form').addEventListener('submit', function (event) {
-            document.getElementById('valider-nom-btn').style.display = 'none';
-            event.preventDefault();
-            var name = document.getElementById('name').value;
-            document.getElementById('name-display').textContent = name;
-            document.getElementById('id-output').style.display = 'block';
-        });
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'dernier_idquizz.php', true);
+        xhr.onload = function() {
+        if (xhr.status === 200) {
+            var lastIdquizz = JSON.parse(xhr.responseText);
+            document.getElementById('last-idquizz').innerText = lastIdquizz;
+        }
+        };
+        xhr.send();
+
+      
     </script>
 </body>
 
