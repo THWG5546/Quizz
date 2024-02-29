@@ -19,7 +19,7 @@ if (empty($nom) || empty($prenom) || empty($idquizz)) {
     $row_check = $result_check->fetch_assoc();
 
     if ($row_check['count'] > 0) {
-        echo "Les données existent déjà dans la base de données.";
+        //echo "Les données existent déjà dans la base de données.";
     } else {
         $sql = "INSERT INTO users (nom, prenom, idquizz) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
