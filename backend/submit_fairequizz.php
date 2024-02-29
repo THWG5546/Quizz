@@ -24,7 +24,7 @@ if (empty($nom) || empty($prenom) || empty($idquizz)) {
         $sql = "INSERT INTO users (nom, prenom, idquizz) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssi", $nom, $prenom, $idquizz);
-        if ($stmt_insert->execute()) {
+        if ($stmt->execute()) {
             echo "Les données ont été insérées avec succès dans la base de données.";
         } else {
             echo "Une erreur s'est produite lors de l'insertion des données dans la base de données.";
