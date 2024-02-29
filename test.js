@@ -4,7 +4,7 @@ $(document).ready(function () {
     note = localStorage.getItem('note') || 0;
     //let note = 0;
     const questionElement = document.getElementById('question');
-    const answersElement = document.getElementById('answers');
+    //const answersElement = document.getElementById('answers');
     const reponse1 = document.getElementById('reponse1');
     const reponse2 = document.getElementById('reponse2');
     const reponse3 = document.getElementById('reponse3');
