@@ -10,7 +10,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['quizz-id'])) {
     $prenom = $_POST['prenom'];
     $quizzId = $_POST['quizz-id'];
 
-    $stmt = $conn->prepare("SELECT note FROM users WHERE nom = ? AND prenom = ? AND idquizz = ?");
+    $stmt = $conn->prepare("SELECT note FROM quizz WHERE nom = ? AND prenom = ? AND idquizz = ?");
     $stmt->bind_param("ssi", $nom, $prenom, $quizzId);
 
     if ($stmt->execute()) {
