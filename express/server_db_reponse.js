@@ -13,6 +13,19 @@ const db = mysql.createConnection({
     database: 'quizz_reponse'
 });
 
+db.connect((err) => {
+    if(err){
+        console.log("Erreur de connexion:  " +err.stack)
+        return;
+    }
+    console.log('Connexion réussie')
+});
+
+db.query("SELECT * FROM reponses"), (err, rows, fields) => {
+    if(err) throw err;
+    console.log("Les données sont:", rows)
+}
+
 app.get('/reponses', (req, res) => {
     const sql = 'SELECT * FROM reponses';
     db.query(sql, (err, result) => {
