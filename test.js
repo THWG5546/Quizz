@@ -93,7 +93,7 @@ $(document).ready(function () {
             .then(response => response.json())
             .then(questionData => {
                 if (questionData) {
-                    if (questionData.count == questionIndex) {
+                    if (questionData.count == questionIndex - 1) {
                         let url = "https://thwg5546.github.io/Quizz/Note.html"
                         window.location.href = url;
                     }
