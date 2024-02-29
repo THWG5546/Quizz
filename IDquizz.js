@@ -2,6 +2,8 @@ $(document).ready(function () {
     document.getElementById('valider-quizz-btn').addEventListener('click', function () {
         console.log("Le bouton de validation a été cliqué !");
         var idquizzValue = document.getElementById('quiz-id').value;
+        var nomValue = document.getElementById('quiz-name').value;
+        var prenomValue = document.getElementById('quiz-firstname').value;
         console.log("La valeur de quiz-id est : " + idquizzValue);
         localStorage.setItem('quizzindex', idquizzValue);
         console.log(localStorage.getItem('quizzindex'));
