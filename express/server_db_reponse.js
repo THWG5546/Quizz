@@ -21,6 +21,10 @@ db.connect((err) => {
     console.log('Connexion réussie')
 });
 
+db.query("SELECT * FROM reponses"), (err, rows, fields) => {
+    if(err) throw err;
+    console.log("Les données sont:", rows)
+}
 
 app.get('/reponses', (req, res) => {
     const sql = 'SELECT * FROM reponses';
