@@ -29,8 +29,8 @@ if (empty($nom) || empty($prenom) || empty($idquizz)) {
         } else {
             echo "Une erreur s'est produite lors de l'insertion des données dans la base de données.";
         }
+        $stmt->close();
     }
     $stmt_check->close();
-    $stmt->close();
-    $conn->close();
 }
+$conn->close();
