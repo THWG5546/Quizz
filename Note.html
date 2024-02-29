@@ -19,12 +19,16 @@
 
     <div class="container">
         <div class="titre-container">
-            <h1 class="titre">Entrez votre ID pour obtenir votre note</h1>
+            <h1 class="titre">Entrez vos informations pour obtenir votre note</h1>
         </div>
 
         <form id="quizz-id-form">
             <div class="sous-titre-container phrase-container">
-                <label for="quizz-id">ID pour la note :</label><br>
+                <label for="nom">Nom :</label><br>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required><br>
+                <label for="prenom">Prénom :</label><br>
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required><br>
+                <label for="quizz-id">ID du quizz :</label><br>
                 <input type="text" id="quizz-id" name="quizz-id" placeholder="Votre ID ici" required><br>
             </div>
 
@@ -40,6 +44,8 @@
     <script>
         document.getElementById('quizz-id-form').addEventListener('submit', function (event) {
             event.preventDefault();
+            var nom = document.getElementById('nom').value;
+            var prenom = document.getElementById('prenom').value;
             var quizzId = document.getElementById('quizz-id').value;
 
             fetch('backend/submit_note.php', {
@@ -48,6 +54,8 @@
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
+                    'nom': nom,
+                    'prenom': prenom,
                     'quizz-id': quizzId
                 }).toString()
             })
