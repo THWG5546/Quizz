@@ -4,6 +4,7 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 include 'db_connect.php';
 $response = json_encode([]);
+echo $response;
 $nom = $_GET['quiz-name'];
 $prenom = $_GET['quiz-firstname'];
 $idquizz = $_GET['quiz-id'];
