@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="fichiers/scripts/clickeffect.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css">
 </head>
+
 <body>
     <div class="bande">
         <img class="logo" src="fichiers/image/logo.png" alt="logo">
@@ -36,7 +38,7 @@
     </div>
 
     <script>
-        document.getElementById('quizz-id-form').addEventListener('submit', function(event) {
+        document.getElementById('quizz-id-form').addEventListener('submit', function (event) {
             event.preventDefault();
             var quizzId = document.getElementById('quizz-id').value;
 
@@ -47,20 +49,21 @@
                 },
                 body: new URLSearchParams({
                     'quizz-id': quizzId
+                }).toString()
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Réponse réseau non ok');
+                    }
+                    return response.text();
                 })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Réponse réseau non ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('note-display').textContent = data;
-                document.getElementById('note-output').style.display = 'block';
-            })
-            .catch(error => console.error('Erreur:', error));
+                .then(data => {
+                    document.getElementById('note-display').textContent = data;
+                    document.getElementById('note-output').style.display = 'block';
+                })
+                .catch(error => console.error('Erreur:', error));
         });
     </script>
 </body>
+
 </html>

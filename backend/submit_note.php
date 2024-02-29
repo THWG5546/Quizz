@@ -1,14 +1,12 @@
 <?php
-include 'db_connect.php'; 
+include 'db_connect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérification de la connexion à la base de données.
-    if ($conn->connect_error) {
-        die("La connexion a échoué : " . $conn->connect_error);
-    }
+if ($conn->connect_error) {
+    die("La connexion a échoué : " . $conn->connect_error);
+}
 
-    // Assurez-vous que le nom du champ est correct et correspond à celui du formulaire HTML.
-    $quizzId = isset($_POST['quizz-id']) ? $_POST['quizz-id'] : '';
+if (isset($_POST['quizz-id'])) {
+    $quizzId = $_POST['quizz-id'];
 
     $stmt = $conn->prepare("SELECT Note FROM NoteQuizz WHERE ID = ?");
     $stmt->bind_param("i", $quizzId);
@@ -26,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->close();
-    $conn->close();
 } else {
-    echo "Méthode non autorisée";
+    echo "Aucun ID de quizz fourni";
 }
-?>
+
+$conn->close();
