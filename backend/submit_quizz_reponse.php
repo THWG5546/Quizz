@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             if ($_POST["action"] == "valider") {
-                header('Location: http://localhost/PageId.html');
+                header('Location: https://localhost/PageId.html');
             } else if ($_POST["action"] == "autre_question") {
-                header('Location: http://localhost/projetFilm.html');
+                header('Location: https://localhost/projetFilm.html');
                 exit;
             }
             
