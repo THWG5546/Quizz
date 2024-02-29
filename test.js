@@ -32,6 +32,8 @@ $(document).ready(function () {
         console.log("Le bouton de validation a été cliqué !");
         checkSelectedAnswer();
         console.log(note);
+        console.log(reponse1);
+        console.log(questionData.bonnereponse);
         nextQuestion();
     });
 
