@@ -1,4 +1,5 @@
 <?php
+
 $bdd_questions = new PDO('mysql:host=localhost:3306;dbname=quizz', 'root', '');
 
 $bdd_reponses = new PDO('mysql:host=localhost:3306;dbname=quizz_reponse', 'root', '');
