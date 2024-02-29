@@ -5,18 +5,18 @@ $(document).ready(function () {
     //let note = 0;
     const questionElement = document.getElementById('question');
     //const answersElement = document.getElementById('answers');
-    const reponse1 = document.getElementById('reponse1');
-    const reponse2 = document.getElementById('reponse2');
-    const reponse3 = document.getElementById('reponse3');
-    const reponse4 = document.getElementById('reponse4');
+    const reponse_1 = document.getElementById('reponse_1');
+    const reponse_2 = document.getElementById('reponse_2');
+    const reponse_3 = document.getElementById('reponse_3');
+    const reponse_4 = document.getElementById('reponse_4');
     //const noteElement = document.getElementById('note');
     getQuestion()
     function showQuestion(questionData) {
         questionElement.textContent = questionData.question;
-        reponse1.textContent = questionData.reponse1;
-        reponse2.textContent = questionData.reponse2;
-        reponse3.textContent = questionData.reponse3;
-        reponse4.textContent = questionData.reponse4;
+        reponse_1.textContent = questionData.reponse1;
+        reponse_2.textContent = questionData.reponse2;
+        reponse_3.textContent = questionData.reponse3;
+        reponse_4.textContent = questionData.reponse4;
         /*answersElement.innerHTML = '';
         for (let i = 1; i <= 4; i++) {
             const option = questionData['reponse' + i];
