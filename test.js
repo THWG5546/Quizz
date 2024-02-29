@@ -38,16 +38,16 @@ $(document).ready(function () {
     function checkSelectedAnswer() {
         if (reponse1.checked) {
             console.log("Réponse 1 sélectionnée !");
-            validateAnswer(reponse1 === questionData.bonnereponse)
+            validateAnswer(questionData.reponse1 === questionData.bonnereponse)
         } else if (reponse2.checked) {
             console.log("Réponse 2 sélectionnée !");
-            validateAnswer(reponse2 === questionData.bonnereponse)
+            validateAnswer(questionData.reponse2 === questionData.bonnereponse)
         } else if (reponse3.checked) {
             console.log("Réponse 3 sélectionnée !");
-            validateAnswer(reponse3 === questionData.bonnereponse)
+            validateAnswer(questionData.reponse3 === questionData.bonnereponse)
         } else if (reponse4.checked) {
             console.log("Réponse 4 sélectionnée !");
-            validateAnswer(reponse4 === questionData.bonnereponse)
+            validateAnswer(questionData.reponse4 === questionData.bonnereponse)
         } else {
             console.log("Aucune réponse sélectionnée !");
         }
