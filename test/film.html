@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyQuizz</title>
+    <link rel="stylesheet" href="fichiers/css/CreateQuestions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css">
+    <link rel="icon" href="fichiers/image/logo.png">
+    <script src="fichiers/scripts/clickeffect.js"></script>
+</head>
+
+<body>
+    <div class="bande">
+        <a href="index.html"><img class="logo" src="fichiers/image/logo.png" alt="logo"></a>
+        <h1 class="titre">EasyQuizz!</h1>
+    </div>
+<div class="container">
+        <div class="titre-container">
+            <h1 class="titre">Créez votre propre Quizz ! </h1>
+        </div>
+
+        <form id="quizz-form" method="post" action="submit_quizz.php">
+            <div class="sous-titre-container phrase-container">
+                <label for="question">Entrez Votre Question :</label><br>
+                <input type="text" id="question" name="question" placeholder="Votre question ici" required><br>
+            </div>
+
+            <div id="reponses-container" class="reponses-container">
+            </div>
+
+            <button type="button" id="ajouter-reponse-btn" onclick="ajouterReponse()" class="bttn-pill bttn-md bttn-primary">Ajouter une réponse</button>
+            <button type="" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary" onclick="ajouterQuestion()">Ajouter Question</button>
+            <button type="submit" id="valider-quizz-btn" class="bttn-pill bttn-md bttn-primary" onclick="valider()">Valider</button>
+        </form>
+
+        <div id="quizz-output" class="sous-titre-container" style="display: none;">
+            <p>Votre question :</p>
+            <p id="question-display"></p>
+
+            <p>Réponses :</p>
+            <ul id="reponses-display" class="reponseInput"></ul>
+
+            <p id="bonnes-reponses-display"></p>
+        </div>
+    </div>
+    <script>
+        let nombreQuestions = 1;
+        let reload = 0
+    </script>
+<script>
+        let nombreReponses = 1;
+
+        function valider() {
+
+        window.location.href = 'index.html';
+        }
+        function ajouterReponse() {
+            if (nombreReponses < 5) {
+                let reponsesContainer = document.getElementById('reponses-container');
+                let nouvelleReponseInput = document.createElement('input');
+                nouvelleReponseInput.type = 'text';
+                nouvelleReponseInput.name = 'reponse' + nombreReponses;
+                nouvelleReponseInput.id = 'reponse' + nombreReponses;
+                nouvelleReponseInput.placeholder = 'Réponse ' + nombreReponses;
+                reponsesContainer.appendChild(nouvelleReponseInput);
+
+                // Créer une case à cocher pour chaque nouvelle réponse ajoutée
+                let nouvelleCheckBox = document.createElement('input');
+                nouvelleCheckBox.type = 'radio';
+                nouvelleCheckBox.name = 'bonneReponse';
+                nouvelleCheckBox.value = nombreReponses;
+                reponsesContainer.appendChild(nouvelleCheckBox);
+
+                reponsesContainer.appendChild(document.createElement('br'));
+                nombreReponses++;
+            } else {
+                alert('Vous ne pouvez ajouter plus de 4 réponses.');
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('quizz-form').reset();
+        }
+
+        function ajouterQuestion() {
+            let formData = new FormData(document.getElementById('quizz-form'));
+            formData.append('nombreQuestions', nombreQuestions);
+            formData.append('reload', reload);
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "submit_quizz.php", true);
+            xhr.send(formData);
+            nombreQuestions++;
+            reload ++
+            resetForm();
+        }
+    </script>
+</body>
+
+</html>
