@@ -67,7 +67,7 @@ input[type="text"] {
     background-color: #FFFFFF;
 }
 
-button[type="submit"] {
+button {
     padding: 10px 20px;
     background-color: #1f65f2;
     color: white;
