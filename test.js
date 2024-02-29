@@ -32,8 +32,6 @@ $(document).ready(function () {
         console.log("Le bouton de validation a été cliqué !");
         checkSelectedAnswer();
         console.log(note);
-        console.log(questionData.reponse1);
-        console.log(questionData.bonnereponse);
         nextQuestion();
     });
 
@@ -74,6 +72,8 @@ $(document).ready(function () {
                 if (questionData) {
                     console.log("Question trouvée");
                     showQuestion(questionData);
+                    console.log(questionData.reponse1);
+                    console.log(questionData.bonnereponse);
                 } else {
                     console.log("Question non trouvée");
                 }
