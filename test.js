@@ -95,12 +95,13 @@ $(document).ready(function () {
                 if (questionData) {
                     if (questionData.count == questionIndex) {
                         let url = "https://thwg5546.github.io/Quizz/Note.html"
+                        window.location.href = url;
                     }
                     else {
                         let url = 'https://thwg5546.github.io/Quizz/testquizz.html?idquizz=' + idquizz + '&id=' + questionId;
+                        window.location.href = url;
                     }
                 }
-                window.location.href = url;
             })
             .catch(error => console.error('Erreur lors de la récupération du nb index:', error));
 
